@@ -1,26 +1,40 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter, Route, Switch, useLocation } from "react-router-dom";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+    const Fun = () => {
+        let query = new URLSearchParams(useLocation().search)
+        console.log("this is the value: ", query.get('code'))
+
+        return <></>
+    }
+
+  return (<div className="App">
+      <BrowserRouter>
+          <Switch>
+              <Route
+                  path={"/"}
+                  component={() => {
+                      return (
+                          <>
+                              <a
+                                  className="App-link"
+                                  href="https://github.com/login/oauth/authorize?client_id=d01fafaf5472594c537f&scope=repo">
+                                  Authorize Github
+                              </a>
+                              <Fun/>
+                          </>
+                      )
+                  }}>
+              </Route>
+          </Switch>
+      </BrowserRouter>
+  </div>)
 }
 
+
 export default App;
+
