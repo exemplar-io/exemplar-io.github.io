@@ -13,7 +13,7 @@ const Home = () => {
   useEffect(() => {
     if (code) {
       api.auth(code).then((token) => {
-        setToken(token.length);
+        setToken(token);
       });
     }
   }, [code]);
@@ -22,11 +22,18 @@ const Home = () => {
     (window.location.href =
       'https://github.com/login/oauth/authorize?client_id=d01fafaf5472594c537f&scope=repo');
 
+  const onOpenRepoClick = () => window.open(repoLink);
+
   const onRepoNameInputChange = (event: ChangeEvent<HTMLInputElement>) =>
     setRepoName(event.target.value);
 
   const onCreateRepoClick = () => {
-    api.createRepo(repoName, token).then((repoLink) => setRepoLink(repoLink));
+    api
+      .createRepo(repoName, token)
+      .then((repoLink) => setRepoLink(repoLink))
+      .catch((error) => {
+        setRepoLink('');
+      });
   };
 
   return (
@@ -52,7 +59,6 @@ const Home = () => {
           onChange={onRepoNameInputChange}
         />
       </div>
-
       <div>
         <button
           disabled={!token || !repoName}
@@ -62,6 +68,17 @@ const Home = () => {
           Create repository
         </button>
       </div>
+
+      {repoLink ? (
+        <div>
+          <button
+            className=" bg-purple-500 shadow hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+            onClick={onOpenRepoClick}
+          >
+            Open Repository
+          </button>
+        </div>
+      ) : null}
     </main>
   );
 };
