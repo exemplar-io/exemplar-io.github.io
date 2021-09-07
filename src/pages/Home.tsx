@@ -2,6 +2,7 @@ import React, { ChangeEvent, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import * as api from '../api/api';
 import PrimaryButton from '../components/UI/PrimaryButton';
+import PrimaryInputField from '../components/UI/PrimaryInputField';
 
 const Home = () => {
   const [token, setToken] = useState('');
@@ -38,7 +39,7 @@ const Home = () => {
   };
 
   return (
-    <main className={'container mx-auto w-2/6 space-y-10 '}>
+    <main className={'container mx-auto w-2/6 space-y-10'}>
       <h1 className="text-secondary text-4xl">Peareasy Elastics 🔥</h1>
       <h3 className="text-secondary text-xl">
         In order for us to be able to create an awesome project template for
@@ -59,10 +60,8 @@ const Home = () => {
           </h3>
 
           <div>
-            <input
-              className="shadow appearance-none border-2 border-primary-500 rounded py-2 px-3 text-primary-700 leading-tight focus:outline-none focus:shadow-outline"
+            <PrimaryInputField
               id="username"
-              type="text"
               placeholder="Repository name"
               value={repoName}
               onChange={onRepoNameInputChange}
