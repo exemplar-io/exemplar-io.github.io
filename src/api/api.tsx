@@ -8,3 +8,4 @@ export default instance;
 
 export { auth } from './requests/auth';
 export { createRepo } from './requests/createRepo';
+export { deleteRepos } from './requests/deleteRepos';

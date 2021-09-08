@@ -1,9 +1,17 @@
 import axios from '../api';
 
-export const createRepo = (repoName: string, githubToken: string) => {
+export const createRepo = (
+  msRepoName: string,
+  rootRepoName: string,
+  githubToken: string,
+) => {
+  console.log(msRepoName);
+  console.log(rootRepoName);
+  console.log(githubToken);
+
   return axios
-    .post('/github/repo', { repoName, githubToken })
+    .post('/github/repo', { msRepoName, rootRepoName, githubToken })
     .then((response) => {
-      return response.data;
+      return response.data.msUrl;
     });
 };

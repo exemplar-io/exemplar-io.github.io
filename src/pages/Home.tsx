@@ -6,7 +6,8 @@ import PrimaryInputField from '../components/UI/PrimaryInputField';
 
 const Home = () => {
   const [token, setToken] = useState('');
-  const [repoName, setRepoName] = useState('');
+  const [msRepoName, setRepoName] = useState('');
+  const [rootRepoName, setRootRepoName] = useState('');
   const [repoLink, setRepoLink] = useState('');
 
   const query = new URLSearchParams(useLocation().search);
@@ -22,24 +23,33 @@ const Home = () => {
 
   const onAuthClick = () =>
     (window.location.href =
-      'https://github.com/login/oauth/authorize?client_id=d01fafaf5472594c537f&scope=repo');
+      'https://github.com/login/oauth/authorize?client_id=d01fafaf5472594c537f&scope=repo delete_repo');
 
   const onOpenRepoClick = () => window.open(repoLink);
 
   const onRepoNameInputChange = (event: ChangeEvent<HTMLInputElement>) =>
     setRepoName(event.target.value);
 
+  const onRootRepoNameInputChange = (event: ChangeEvent<HTMLInputElement>) =>
+    setRootRepoName(event.target.value);
+
   const onCreateRepoClick = () => {
     api
-      .createRepo(repoName, token)
+      .createRepo(msRepoName, rootRepoName, token)
       .then((repoLink) => setRepoLink(repoLink))
       .catch(() => {
         setRepoLink('');
       });
   };
 
+  const onDeleteReposClick = async () => {
+    const res = await api.deleteRepos(msRepoName, rootRepoName, token);
+    setRepoLink('');
+    console.log(res);
+  };
+
   return (
-    <main className={'container mx-auto w-2/6 space-y-10'}>
+    <main className={'container mx-auto w-2/6 space-y-10 pb-20'}>
       <h1 className="text-secondary text-4xl">Peareasy Elastics 🔥</h1>
       <h3 className="text-secondary text-xl">
         In order for us to be able to create an awesome project template for
@@ -59,19 +69,28 @@ const Home = () => {
             Cool! The next step is to choose a project name 😎
           </h3>
 
-          <div>
+          <div className="space-y-3">
             <PrimaryInputField
               id="username"
-              placeholder="Repository name"
-              value={repoName}
+              placeholder="MS Repository name"
+              value={msRepoName}
               onChange={onRepoNameInputChange}
             />
-          </div>
-          <div>
+            <PrimaryInputField
+              id="rootRepoName"
+              placeholder="Root Repository name"
+              value={rootRepoName}
+              onChange={onRootRepoNameInputChange}
+            />
             <PrimaryButton
-              title="Create Repository"
+              title="Create Repositories"
               onClick={onCreateRepoClick}
-              disabled={!token || !repoName}
+              disabled={!token || !msRepoName}
+            />
+
+            <PrimaryButton
+              title="Delete Repositories"
+              onClick={onDeleteReposClick}
             />
           </div>
 
