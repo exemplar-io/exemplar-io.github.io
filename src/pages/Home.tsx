@@ -40,7 +40,8 @@ const Home = () => {
     api
       .createRepo(msRepoName, apiRepoName, rootRepoName, token)
       .then((repoLink) => setRepoLink(repoLink))
-      .catch(() => {
+      .catch((err) => {
+        console.log(err.message);
         setRepoLink('');
       });
   };
