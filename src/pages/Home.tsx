@@ -7,6 +7,7 @@ import PrimaryInputField from '../components/UI/PrimaryInputField';
 const Home = () => {
   const [token, setToken] = useState('');
   const [msRepoName, setRepoName] = useState('');
+  const [apiRepoName, setApiRepoName] = useState('');
   const [rootRepoName, setRootRepoName] = useState('');
   const [repoLink, setRepoLink] = useState('');
 
@@ -29,13 +30,15 @@ const Home = () => {
 
   const onRepoNameInputChange = (event: ChangeEvent<HTMLInputElement>) =>
     setRepoName(event.target.value);
+  const onApiRepoNameInputChange = (event: ChangeEvent<HTMLInputElement>) =>
+    setApiRepoName(event.target.value);
 
   const onRootRepoNameInputChange = (event: ChangeEvent<HTMLInputElement>) =>
     setRootRepoName(event.target.value);
 
   const onCreateRepoClick = () => {
     api
-      .createRepo(msRepoName, rootRepoName, token)
+      .createRepo(msRepoName, apiRepoName, rootRepoName, token)
       .then((repoLink) => setRepoLink(repoLink))
       .catch(() => {
         setRepoLink('');
@@ -43,9 +46,13 @@ const Home = () => {
   };
 
   const onDeleteReposClick = async () => {
-    const res = await api.deleteRepos(msRepoName, rootRepoName, token);
+    const res = await api.deleteRepos(
+      msRepoName,
+      apiRepoName,
+      rootRepoName,
+      token,
+    );
     setRepoLink('');
-    console.log(res);
   };
 
   return (
@@ -70,28 +77,43 @@ const Home = () => {
           </h3>
 
           <div className="space-y-3">
-            <PrimaryInputField
-              id="username"
-              placeholder="MS Repository name"
-              value={msRepoName}
-              onChange={onRepoNameInputChange}
-            />
-            <PrimaryInputField
-              id="rootRepoName"
-              placeholder="Root Repository name"
-              value={rootRepoName}
-              onChange={onRootRepoNameInputChange}
-            />
-            <PrimaryButton
-              title="Create Repositories"
-              onClick={onCreateRepoClick}
-              disabled={!token || !msRepoName}
-            />
-
-            <PrimaryButton
-              title="Delete Repositories"
-              onClick={onDeleteReposClick}
-            />
+            <div>
+              <PrimaryInputField
+                id="username"
+                placeholder="MS Repository name"
+                value={msRepoName}
+                onChange={onRepoNameInputChange}
+              />
+            </div>
+            <div>
+              <PrimaryInputField
+                id="apiRepoName"
+                placeholder="Api Repository name"
+                value={apiRepoName}
+                onChange={onApiRepoNameInputChange}
+              />
+            </div>
+            <div>
+              <PrimaryInputField
+                id="rootRepoName"
+                placeholder="Root Repository name"
+                value={rootRepoName}
+                onChange={onRootRepoNameInputChange}
+              />
+            </div>
+            <div>
+              <PrimaryButton
+                title="Create Repositories"
+                onClick={onCreateRepoClick}
+                disabled={!token || !msRepoName}
+              />
+            </div>
+            <div>
+              <PrimaryButton
+                title="Delete Repositories"
+                onClick={onDeleteReposClick}
+              />
+            </div>
           </div>
 
           {repoLink ? (
@@ -104,7 +126,7 @@ const Home = () => {
               </div>
               <div>
                 <PrimaryButton
-                  title="Open Repository"
+                  title="Open Root Repository"
                   onClick={onOpenRepoClick}
                 />
               </div>

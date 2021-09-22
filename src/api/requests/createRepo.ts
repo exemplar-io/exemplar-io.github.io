@@ -2,6 +2,7 @@ import axios from '../api';
 
 export const createRepo = (
   msRepoName: string,
+  apiRepoName: string,
   rootRepoName: string,
   githubToken: string,
 ) => {
@@ -10,8 +11,13 @@ export const createRepo = (
   console.log(githubToken);
 
   return axios
-    .post('/github/repo', { msRepoName, rootRepoName, githubToken })
+    .post('/github/repo', {
+      msRepoName,
+      apiRepoName,
+      rootRepoName,
+      githubToken,
+    })
     .then((response) => {
-      return response.data.msUrl;
+      return response.data.rootUrl;
     });
 };
