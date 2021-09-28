@@ -11,6 +11,7 @@ const Home = () => {
   const [apiRepoName, setApiRepoName] = useState('');
   const [rootRepoName, setRootRepoName] = useState('');
   const [repoLink, setRepoLink] = useState('');
+  const [error, setError] = useState('');
 
   const query = new URLSearchParams(useLocation().search);
   const code = query.get('code');
@@ -34,25 +35,24 @@ const Home = () => {
   const onApiRepoNameInputChange = (event: ChangeEvent<HTMLInputElement>) =>
     setApiRepoName(event.target.value);
 
-  const onRootRepoNameInputChange = (event: ChangeEvent<HTMLInputElement>) =>
+  const onRootRepoNameInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setError('')
     setRootRepoName(event.target.value);
+  }
 
   const onCreateRepoClick = () => {
     api
       .createRepo(msRepoName, apiRepoName, rootRepoName, token)
-      .then((repoLink) => {
-
-
-        setRepoLink(repoLink);
-      })
+      .then((repoLink) => setRepoLink(repoLink))
       .catch((err) => {
-        console.log(err.message);
+        if (err.response.status === 422)
+          setError("Oh no! One or more of the repository names were already taken! 😮 Find a new name and try again!")
         setRepoLink('');
       });
   };
 
   const onDeleteReposClick = async () => {
-    const res = await api.deleteRepos(
+    await api.deleteRepos(
       msRepoName,
       apiRepoName,
       rootRepoName,
@@ -83,6 +83,13 @@ const Home = () => {
           </h3>
 
           <div className="space-y-3">
+
+              <div hidden={!error}>
+                <p className="text-white" style={{color: "red"}}>
+                  {error}
+                </p>
+              </div>
+
             <div>
               <PrimaryInputField
                 id="rootRepoName"
