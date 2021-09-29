@@ -10,8 +10,13 @@ module.exports = {
       current: 'currentColor',
       primary: colors.indigo,
       secondary: colors.white,
-      gray: colors.gray
-
+      gray: colors.gray,
+      error: colors.red['500']
+    },
+    textColor: {
+      primary: colors.indigo,
+      secondary: colors.white,
+      error: colors.red['500']
     },
     extend: {},
   },

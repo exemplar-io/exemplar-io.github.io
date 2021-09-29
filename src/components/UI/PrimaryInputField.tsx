@@ -1,8 +1,9 @@
 import React, { ChangeEvent } from 'react';
 
-type PrimaryButtonProps = {
+type PrimaryInputProps = {
   id: string;
   placeholder: string;
+  error: string;
   value: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 };
@@ -10,12 +11,20 @@ type PrimaryButtonProps = {
 const PrimaryInputField = ({
   id,
   placeholder,
+  error,
   value,
   onChange,
-}: PrimaryButtonProps) => {
+}: PrimaryInputProps) => {
+  let borderColor = 'border-primary-500';
+  if (error) borderColor = 'border-error';
+
   return (
     <input
-      className="shadow appearance-none border-2 border-primary-500 rounded py-2 px-3 text-primary-700 leading-tight focus:outline-none focus:shadow-outline"
+      className={
+        'shadow appearance-none border-2 ' +
+        borderColor +
+        ' rounded py-2 px-3 text-primary-500 leading-tight focus:outline-none focus:shadow-outline'
+      }
       id={id}
       type="text"
       placeholder={placeholder}

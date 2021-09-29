@@ -17,7 +17,5 @@ export const createRepo = (
       rootRepoName,
       githubToken,
     })
-    .then((response) => {
-      return response.data.rootUrl;
-    });
+    .then((response) => response.data.rootUrl);
 };
