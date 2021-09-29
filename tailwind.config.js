@@ -1,4 +1,4 @@
-const colors = require('tailwindcss/colors')
+const colors = require('tailwindcss/colors');
 
 module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
@@ -11,12 +11,12 @@ module.exports = {
       primary: colors.indigo,
       secondary: colors.white,
       gray: colors.gray,
-      error: colors.red['500']
+      error: colors.red['500'],
     },
     textColor: {
       primary: colors.indigo,
       secondary: colors.white,
-      error: colors.red['500']
+      error: colors.red['500'],
     },
     extend: {},
   },
@@ -25,8 +25,8 @@ module.exports = {
       opacity: ['disabled'],
       backgroundColor: ['disabled'],
       cursor: ['disabled'],
-      hover: ['disabled']
+      hover: ['disabled'],
     },
   },
   plugins: [],
-}
+};
