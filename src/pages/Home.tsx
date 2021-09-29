@@ -64,7 +64,7 @@ const Home = () => {
         setError('');
         setRepoLink('');
       })
-      .catch((err) => {
+      .catch(() => {
         setError(
           'Oh no! One or more of the repositories could not be deleted! 😮 Please try again later',
         );
