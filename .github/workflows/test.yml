@@ -12,12 +12,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [14.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
@@ -42,6 +36,5 @@ jobs:
         uses: creyD/prettier_action@v4.0
         with:
           # This part is also where you can pass other options, for example:
-          dry: true
-          prettier_options: --check "src/api"
-
+          prettier_options: --write **/*.{ts,tsx,js}
+          only_changed: True
