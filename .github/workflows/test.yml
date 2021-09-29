@@ -20,7 +20,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Testing
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
@@ -31,17 +31,10 @@ jobs:
       - run: prettier --check .
   prettier:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
         with:
-          # Make sure the actual branch is checked out when running on pull requests
-          ref: ${{ github.head_ref }}
-
-      - name: Prettify code
-        uses: creyD/prettier_action@v4.0
-        with:
-          # This part is also where you can pass other options, for example:
-          prettier_options: --check src
+          node-version: 14
+        - run: npm i
+        - run: npx prettier --check .
 
