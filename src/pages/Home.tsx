@@ -57,7 +57,13 @@ const Home = () => {
   const onCreateRepoClick = () => {
     setLoading(true);
     api
-      .createRepo(msRepoName, apiRepoName, frontendRepoName, rootRepoName, token)
+      .createRepo(
+        msRepoName,
+        apiRepoName,
+        frontendRepoName,
+        rootRepoName,
+        token,
+      )
       .then((repoLink) => {
         setLoading(false);
         setRepoLink(repoLink);
