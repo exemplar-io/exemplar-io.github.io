@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import * as api from '../api/api';
 import PrimaryButton from '../components/UI/PrimaryButton';
 import PrimaryInputField from '../components/UI/PrimaryInputField';
+import Spinner from '../components/UI/Spinner/Spinner';
 import { CopyBlock, dracula } from 'react-code-blocks';
 
 const Home = () => {
@@ -13,6 +14,7 @@ const Home = () => {
   const [rootRepoName, setRootRepoName] = useState('');
   const [repoLink, setRepoLink] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const query = new URLSearchParams(useLocation().search);
   const code = query.get('code');
@@ -53,21 +55,20 @@ const Home = () => {
   };
 
   const onCreateRepoClick = () => {
+    setLoading(true);
     api
-      .createRepo(
-        msRepoName,
-        apiRepoName,
-        frontendRepoName,
-        rootRepoName,
-        token,
-      )
-      .then((repoLink) => setRepoLink(repoLink))
+      .createRepo(msRepoName, apiRepoName, frontendRepoName, rootRepoName, token)
+      .then((repoLink) => {
+        setLoading(false);
+        setRepoLink(repoLink);
+      })
       .catch((err) => {
         if (err.response.status === 422)
           setError(
             'Oh no! One or more of the repository names were already taken! 😮 Find a new name and try again!',
           );
         setRepoLink('');
+        setLoading(false);
       });
   };
 
@@ -167,6 +168,7 @@ const Home = () => {
                 onClick={onDeleteReposClick}
               />
             </div>
+            <div>{loading ? <Spinner /> : null}</div>
           </div>
 
           {repoLink ? (
