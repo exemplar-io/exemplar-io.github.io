@@ -29,3 +29,9 @@ jobs:
       - run: npm run build --if-present
       - run: npm test
       - run: prettier --check .
+      - name: Prettify code
+        uses: creyD/prettier_action@v4.0
+        with:
+          # This part is also where you can pass other options, for example:
+          prettier_options: --check .
+
