@@ -3,6 +3,7 @@ import axios from '../api';
 export const createRepo = (
   msRepoName: string,
   apiRepoName: string,
+  frontendRepoName: string,
   rootRepoName: string,
   githubToken: string,
 ) => {
@@ -14,6 +15,7 @@ export const createRepo = (
     .post('/github/repo', {
       msRepoName,
       apiRepoName,
+      frontendRepoName,
       rootRepoName,
       githubToken,
     })

@@ -9,6 +9,7 @@ const Home = () => {
   const [token, setToken] = useState('');
   const [msRepoName, setRepoName] = useState('');
   const [apiRepoName, setApiRepoName] = useState('');
+  const [frontendRepoName, setFrontendRepoName] = useState('');
   const [rootRepoName, setRootRepoName] = useState('');
   const [repoLink, setRepoLink] = useState('');
   const [error, setError] = useState('');
@@ -39,6 +40,13 @@ const Home = () => {
     setApiRepoName(event.target.value);
   };
 
+  const onFrontendRepoNameInputChange = (
+    event: ChangeEvent<HTMLInputElement>,
+  ) => {
+    setError('');
+    setFrontendRepoName(event.target.value);
+  };
+
   const onRootRepoNameInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     setError('');
     setRootRepoName(event.target.value);
@@ -46,7 +54,13 @@ const Home = () => {
 
   const onCreateRepoClick = () => {
     api
-      .createRepo(msRepoName, apiRepoName, rootRepoName, token)
+      .createRepo(
+        msRepoName,
+        apiRepoName,
+        frontendRepoName,
+        rootRepoName,
+        token,
+      )
       .then((repoLink) => setRepoLink(repoLink))
       .catch((err) => {
         if (err.response.status === 422)
@@ -59,7 +73,13 @@ const Home = () => {
 
   const onDeleteReposClick = async () => {
     api
-      .deleteRepos(msRepoName, apiRepoName, rootRepoName, token)
+      .deleteRepos(
+        msRepoName,
+        apiRepoName,
+        frontendRepoName,
+        rootRepoName,
+        token,
+      )
       .then(() => {
         setError('');
         setRepoLink('');
@@ -123,6 +143,15 @@ const Home = () => {
                 placeholder="Api Repository name"
                 value={apiRepoName}
                 onChange={onApiRepoNameInputChange}
+              />
+            </div>
+            <div>
+              <PrimaryInputField
+                id="frontendRepoName"
+                error={error}
+                placeholder="Frontend Repository name"
+                value={frontendRepoName}
+                onChange={onFrontendRepoNameInputChange}
               />
             </div>
             <div>
