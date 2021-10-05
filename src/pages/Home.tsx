@@ -181,8 +181,8 @@ const Home = () => {
             <>
               <div>
                 <h3 className="text-secondary text-xl">
-                  Alright, this is it. Open your newly created Github repo with
-                  a NestJS template ready to go! 👊🏼
+                  Alright, this is it. Here's the link to your new Github repo!
+                  👊🏼
                 </h3>
               </div>
               <div>
@@ -194,13 +194,28 @@ const Home = () => {
               <div>
                 <h3 className="text-secondary text-xl">
                   To download the entire project, open a terminal and paste and
-                  execute the shell command below!
+                  execute the command below!
                 </h3>
               </div>
               <div>
                 <CopyBlock
                   theme={dracula}
                   text={`git clone --recurse-submodules -j8 ${repoLink}`}
+                  language={'shell'}
+                  showLineNumbers={false}
+                  startingLineNumber={1}
+                />
+              </div>
+              <div>
+                <h3 className="text-secondary text-xl">
+                  Now navigate to the project folder and run the entire
+                  project!🍾🥂🥳
+                </h3>
+              </div>
+              <div>
+                <CopyBlock
+                  theme={dracula}
+                  text={`cd ${rootRepoName} \n&& docker-compose up`}
                   language={'shell'}
                   showLineNumbers={false}
                   startingLineNumber={1}
