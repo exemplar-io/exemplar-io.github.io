@@ -29,7 +29,7 @@ const Home = () => {
 
   const onAuthClick = () =>
     (window.location.href =
-      'https://github.com/login/oauth/authorize?client_id=d01fafaf5472594c537f&scope=repo delete_repo');
+      'https://github.com/login/oauth/authorize?client_id=e78392cb4d38b6f34b4b&scope=repo delete_repo workflow');
 
   const onOpenRepoClick = () => window.open(repoLink);
 
