@@ -24,8 +24,6 @@ const Home = () => {
     }
   }, [code]);
 
-  console.log(process.env.REACT_APP_BACKEND_BASE_URL);
-
   const onAuthClick = () =>
     (window.location.href =
       'https://github.com/login/oauth/authorize?client_id=' +
