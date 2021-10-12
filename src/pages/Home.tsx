@@ -37,6 +37,7 @@ const Home = () => {
     setError('');
     setRepoName(event.target.value);
   };
+
   const onApiRepoNameInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     setError('');
     setApiRepoName(event.target.value);
@@ -99,7 +100,7 @@ const Home = () => {
   };
 
   return (
-    <main className={'container mx-auto w-2/6 space-y-10 pb-20'}>
+    <main className={'container mx-auto w-2/6 space-y-10 pb-20 pt-20'}>
       <h1 className="text-secondary text-4xl">Peareasy Elastics 🔥</h1>
       <h3 className="text-secondary text-xl">
         In order for us to be able to create an awesome project template for
