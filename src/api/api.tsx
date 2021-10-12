@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'https://8eqbhzi5ay.eu-west-1.awsapprunner.com/',
+  baseURL: process.env.REACT_APP_BACKEND_BASE_URL,
 });
 
 export default instance;
