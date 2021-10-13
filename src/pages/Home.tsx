@@ -8,10 +8,7 @@ import { CopyBlock, dracula } from 'react-code-blocks';
 
 const Home = () => {
   const [token, setToken] = useState('');
-  const [msRepoName, setRepoName] = useState('');
-  const [apiRepoName, setApiRepoName] = useState('');
-  const [frontendRepoName, setFrontendRepoName] = useState('');
-  const [rootRepoName, setRootRepoName] = useState('');
+  const [projectName, setRootRepoName] = useState('');
   const [repoLink, setRepoLink] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -29,28 +26,13 @@ const Home = () => {
 
   const onAuthClick = () =>
     (window.location.href =
-      'https://github.com/login/oauth/authorize?client_id=e78392cb4d38b6f34b4b&scope=repo delete_repo workflow');
+      'https://github.com/login/oauth/authorize?client_id=' +
+      process.env.REACT_APP_GITHUB_CLIENT_ID +
+      '&scope=repo delete_repo workflow');
 
   const onOpenRepoClick = () => window.open(repoLink);
 
-  const onRepoNameInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setError('');
-    setRepoName(event.target.value);
-  };
-
-  const onApiRepoNameInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setError('');
-    setApiRepoName(event.target.value);
-  };
-
-  const onFrontendRepoNameInputChange = (
-    event: ChangeEvent<HTMLInputElement>,
-  ) => {
-    setError('');
-    setFrontendRepoName(event.target.value);
-  };
-
-  const onRootRepoNameInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const onProjectNameInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     setError('');
     setRootRepoName(event.target.value);
   };
@@ -58,13 +40,7 @@ const Home = () => {
   const onCreateRepoClick = () => {
     setLoading(true);
     api
-      .createRepo(
-        msRepoName,
-        apiRepoName,
-        frontendRepoName,
-        rootRepoName,
-        token,
-      )
+      .createRepo(projectName, token)
       .then((repoLink) => {
         setLoading(false);
         setRepoLink(repoLink);
@@ -72,7 +48,7 @@ const Home = () => {
       .catch((err) => {
         if (err.response.status === 422)
           setError(
-            'Oh no! One or more of the repository names were already taken! 😮 Find a new name and try again!',
+            'Oh no! Project name was already occupied on your Github account! 😮 Find a new name and try again!',
           );
         setRepoLink('');
         setLoading(false);
@@ -81,13 +57,7 @@ const Home = () => {
 
   const onDeleteReposClick = async () => {
     api
-      .deleteRepos(
-        msRepoName,
-        apiRepoName,
-        frontendRepoName,
-        rootRepoName,
-        token,
-      )
+      .deleteRepos(projectName, token)
       .then(() => {
         setError('');
         setRepoLink('');
@@ -128,45 +98,18 @@ const Home = () => {
 
             <div>
               <PrimaryInputField
-                id="rootRepoName"
+                id="projectName"
                 error={error}
-                placeholder="Root Repository name"
-                value={rootRepoName}
-                onChange={onRootRepoNameInputChange}
-              />
-            </div>
-            <div>
-              <PrimaryInputField
-                id="username"
-                error={error}
-                placeholder="MS Repository name"
-                value={msRepoName}
-                onChange={onRepoNameInputChange}
-              />
-            </div>
-            <div>
-              <PrimaryInputField
-                id="apiRepoName"
-                error={error}
-                placeholder="Api Repository name"
-                value={apiRepoName}
-                onChange={onApiRepoNameInputChange}
-              />
-            </div>
-            <div>
-              <PrimaryInputField
-                id="frontendRepoName"
-                error={error}
-                placeholder="Frontend Repository name"
-                value={frontendRepoName}
-                onChange={onFrontendRepoNameInputChange}
+                placeholder="Project name"
+                value={projectName}
+                onChange={onProjectNameInputChange}
               />
             </div>
             <div>
               <PrimaryButton
                 title="Create Repositories"
                 onClick={onCreateRepoClick}
-                disabled={!token || !msRepoName}
+                disabled={!token || !projectName}
               />
             </div>
             <div>
@@ -216,7 +159,7 @@ const Home = () => {
               <div>
                 <CopyBlock
                   theme={dracula}
-                  text={`cd ${rootRepoName} \n&& docker-compose up`}
+                  text={`cd ${projectName} \n&& docker-compose up`}
                   language={'shell'}
                   showLineNumbers={false}
                   startingLineNumber={1}
