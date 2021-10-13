@@ -87,8 +87,7 @@ const Home = () => {
       {!!token ? (
         <>
           <h3 className="text-secondary text-xl">
-            Cool! The next step is to choose a root project name, a microservice
-            repo name and a API gateway repo name 😎
+            Cool! The next step is to choose a project name 😎
           </h3>
 
           <div className="space-y-3">
