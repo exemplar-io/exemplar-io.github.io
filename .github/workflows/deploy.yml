@@ -15,7 +15,12 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-      - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
+      - name: create env file
+        run: |
+          touch .env
+          echo REACT_APP_GITHUB_CLIENT_ID=e78392cb4d38b6f34b4b >> .env
+          echo REACT_APP_BACKEND_BASE_URL=https://8eqbhzi5ay.eu-west-1.awsapprunner.com >> .env
+      - name: Install and Build 🔧
         run: |
           npm install
           npm run build
