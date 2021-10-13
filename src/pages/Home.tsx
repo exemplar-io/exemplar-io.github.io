@@ -136,8 +136,8 @@ const Home = () => {
               </div>
               <div>
                 <h3 className="text-secondary text-xl">
-                  To download the entire project, open a terminal and paste and
-                  execute the command below!
+                  To download the entire project, open a terminal, paste and run
+                  the command below!
                 </h3>
               </div>
               <div>
