@@ -18,8 +18,9 @@ jobs:
       - name: create env file
         run: |
           touch .env
-          echo REACT_APP_GITHUB_CLIENT_ID=e78392cb4d38b6f34b4b >> .env
-          echo REACT_APP_BACKEND_BASE_URL=https://8eqbhzi5ay.eu-west-1.awsapprunner.com >> .env
+          echo REACT_APP_GITHUB_CLIENT_ID="e78392cb4d38b6f34b4b" >> .env
+          echo REACT_APP_BACKEND_BASE_URL="https://8eqbhzi5ay.eu-west-1.awsapprunner.com" >> .env
+          cat .env
       - name: Install and Build 🔧
         run: |
           npm install
