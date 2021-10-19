@@ -4,7 +4,8 @@ import * as api from '../api/api';
 import PrimaryButton from '../components/UI/PrimaryButton';
 import PrimaryInputField from '../components/UI/PrimaryInputField';
 import Spinner from '../components/UI/Spinner/Spinner';
-import { CopyBlock, dracula } from 'react-code-blocks';
+import { nord } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 
 const Home = () => {
   const [token, setToken] = useState('');
@@ -141,13 +142,13 @@ const Home = () => {
                 </h3>
               </div>
               <div>
-                <CopyBlock
-                  theme={dracula}
-                  text={`git clone --recurse-submodules -j8 ${repoLink}`}
-                  language={'shell'}
-                  showLineNumbers={false}
-                  startingLineNumber={1}
-                />
+                <SyntaxHighlighter
+                  language="shell"
+                  style={nord}
+                  showLineNumbers
+                >
+                  {`git clone --recurse-submodules -j8 ${repoLink}`}
+                </SyntaxHighlighter>
               </div>
               <div>
                 <h3 className="text-secondary text-xl">
@@ -156,13 +157,13 @@ const Home = () => {
                 </h3>
               </div>
               <div>
-                <CopyBlock
-                  theme={dracula}
-                  text={`cd ${projectName} \n&& docker-compose up`}
-                  language={'shell'}
-                  showLineNumbers={false}
-                  startingLineNumber={1}
-                />
+                <SyntaxHighlighter
+                  language="shell"
+                  style={nord}
+                  showLineNumbers
+                >
+                  {`cd ${projectName} && docker-compose up`}
+                </SyntaxHighlighter>
               </div>
             </>
           ) : null}
