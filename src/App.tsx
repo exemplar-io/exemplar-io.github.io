@@ -10,11 +10,13 @@ function App() {
     <div className="min-h-screen bg-gray-800 text-center">
       <BrowserRouter>
         <NavigationBar />
-        <Switch>
-          <Route path={'/docs'} component={Docs} />
-          <Route path={'/about'} component={About} />
-          <Route path={'/'} component={Homepage} />
-        </Switch>
+        <div>
+          <Switch>
+            <Route path={'/docs'} component={Docs} />
+            <Route path={'/about'} component={About} />
+            <Route path={'/'} component={Homepage} />
+          </Switch>
+        </div>
       </BrowserRouter>
     </div>
   );
