@@ -113,7 +113,10 @@ const Docs = () => {
           screenshot seen below. The root project will be a stand alone Github
           repository which contains references to all the repositories we have
           generated. The different references are so called{' '}
-          <a href="https://git-scm.com/book/en/v2/Git-Tools-Submodules">
+          <a
+            href="https://git-scm.com/book/en/v2/Git-Tools-Submodules"
+            target="_blank"
+          >
             submodules
           </a>
           . Which are basically just links to other stand alone repositories -
@@ -121,10 +124,13 @@ const Docs = () => {
         </p>
         <p>
           Apart from the submodule references, the root project also contains a
-          <a href="https://docs.docker.com/compose/"> docker-compose</a> file.
-          With this file, after you've downloaded the project, you can spin up
-          the entire thing with the command docker-compose up. To allow for
-          this, we have wrapped each component of the project in a container
+          <a href="https://docs.docker.com/compose/" target="_blank">
+            {' '}
+            docker-compose
+          </a>{' '}
+          file. With this file, after you've downloaded the project, you can
+          spin up the entire thing with the command docker-compose up. To allow
+          for this, we have wrapped each component of the project in a container
           with a Dockerfile. But more about this in the "Workflow" section.
         </p>
         <img
@@ -138,11 +144,16 @@ const Docs = () => {
         <p className="text-m">
           So, the most flashy part of your newly generated project is definitely
           the frontend. This repository has the code for an entire web
-          application developed in <a href="https://reactjs.org/">ReactJS</a>!
-          We have chosen to use{' '}
-          <a href="https://www.typescriptlang.org/">Typescript</a> as the
-          development language for the web application, but you can also develop
-          ReactJS web apps in Javascript.
+          application developed in{' '}
+          <a href="https://reactjs.org/" target="_blank">
+            ReactJS
+          </a>
+          ! We have chosen to use{' '}
+          <a href="https://www.typescriptlang.org/" target="_blank">
+            Typescript
+          </a>{' '}
+          as the development language for the web application, but you can also
+          develop ReactJS web apps in Javascript.
         </p>
         <p className="text-m">
           Just like all the other repositories we generate for you, we have
@@ -195,7 +206,7 @@ const Docs = () => {
           implementing authentication - you can read a lot more about it on the
           <a href="https://jwt.io/" target="_blank">
             {' '}
-            jwt.io
+            jwt.io{' '}
           </a>
           website.
         </p>
