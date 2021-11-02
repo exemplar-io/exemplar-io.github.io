@@ -170,12 +170,12 @@ const Docs = () => {
         match. If the credentials match, a Json Web Token is generated and sent
         back through the RabbitMQ message queue. Using JWTs for authentication
         is a very popular and highly scalable method of implementing
-        authentication - you can read a lot more about it on the official
+        authentication - you can read a lot more about it on the
         <a href="https://jwt.io/" target="_blank">
           {' '}
-          website for JWT
+          jwt.io
         </a>
-        .
+        website.
       </p>
     </main>
   );
