@@ -18,7 +18,11 @@ module.exports = {
       secondary: colors.white,
       error: colors.red['500'],
     },
-    extend: {},
+    extend: {
+      backgroundImage: {
+        wave: "url('/src/img/background.svg')",
+      },
+    },
   },
   variants: {
     extend: {
