@@ -15,7 +15,7 @@ jobs:
       - name: Install
         run: npm install
       - name: Run frontend
-        run: npm start
+        run: (npm run start&)
       - name: Install E2E
         run: npm install
         working-directory: e2e
