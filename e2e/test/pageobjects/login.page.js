@@ -18,7 +18,8 @@ class LoginPage extends Page {
     }
 
     get btnSubmit() {
-        return $('button[type="submit"]');
+        // console.log($('button[type="button"]').getHTML())
+        return $(".bg-primary-500");
     }
 
     /**
@@ -35,7 +36,7 @@ class LoginPage extends Page {
      * overwrite specific options to adapt it to page object
      */
     open() {
-        return super.open('login');
+        return super.open('');
     }
 }
 
