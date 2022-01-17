@@ -328,6 +328,71 @@ const Docs = () => {
         <h2 className="text-xl bg-primary-800 p-2 rounded" id="DevOps">
           DevOps
         </h2>
+        <h1 className="text-2xl  bg-primary-800 p-4 rounded" id="next-steps">
+          Next Steps - Development Guidelines
+        </h1>
+        <p className="text-secondary text-m text-left">
+          You have gotten the project and seen all of the awesome components and
+          code that have been generated for you. Now it's time to make it your
+          own and implement exactly the features you want in your project. In
+          this section we will go through how to work with the generated project
+          and how to extend it with new features.
+        </p>
+        <p className="text-secondary text-m text-left">
+          You have gotten the project and seen all of the awesome components and
+          code that have been generated for you. Now it's time to make it your
+          own and implement exactly the features you want in your project. In
+          this section we will go through how to work with the generated project
+          and how to extend it with new features.
+        </p>
+        <h2 className="text-2xl" id="root-repository">
+          Development Process
+        </h2>
+        <p className="text-secondary text-m text-left">
+          One of the key features of Exemplar is the setup for continuous
+          integration, testing and deployment. For this flow to work optimally
+          we expect you to follow a certain process when developing new
+          features. In this section we will explain this development process.
+        </p>{' '}
+        <p className="text-secondary text-m text-left">
+          Generally, the flow of adding new features to the project should
+          follow the listed protocol. If the feature involves editing multiple
+          different repositories, repeat this protocol for all of the
+          repositories that the feature touches.
+          <ul className="list-disc">
+            <li>
+              Create and checkout a new git branch with the name of the feature.
+            </li>
+            <li>Develop the necessary code. Issue Git commits regularly</li>
+            <li>
+              Develop appropriate amount of unit, integration and e2e tests
+            </li>
+            <li>
+              When the feature is implemented, open a new pull request in
+              Github.
+            </li>
+            <li>
+              Verify that all Github Actions workflows runs and completes.
+            </li>
+            <li>Merge the pull request with the main branch.</li>
+          </ul>
+          The principles introduced in the list above are mostly general good
+          practice. This includes working with features on a separate branch,
+          developing automated tests etc. But especially important to mention,
+          is that a Github pull request has to be opened in order for the
+          automated test to run. This can even be forced by changing a
+          configuration setting in Github but this has this up to the developer
+          to do.
+        </p>
+        <h2 className="text-2xl" id="root-repository">
+          Root repository
+        </h2>
+        <h2 className="text-2xl" id="root-repository">
+          Root repository
+        </h2>
+        <h2 className="text-2xl" id="root-repository">
+          Root repository
+        </h2>
       </main>
     </>
   );
