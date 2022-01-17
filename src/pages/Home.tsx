@@ -112,12 +112,12 @@ const Home = () => {
                 disabled={!token || !projectName}
               />
             </div>
-            <div>
-              <PrimaryButton
-                title="Delete Repositories"
-                onClick={onDeleteReposClick}
-              />
-            </div>
+            {/*<div>*/}
+            {/*  <PrimaryButton*/}
+            {/*    title="Delete Repositories"*/}
+            {/*    onClick={onDeleteReposClick}*/}
+            {/*  />*/}
+            {/*</div>*/}
             <div>{loading ? <Spinner /> : null}</div>
           </div>
 
