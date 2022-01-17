@@ -1,4 +1,3 @@
-import React from 'react';
 import Sidebar from '../components/UI/Sidebar/Sidebar';
 
 // How to create a code block
@@ -27,10 +26,10 @@ const Docs = () => {
       <Sidebar />
       <main
         className={
-          'container mx-auto w-1/2 space-y-5 pb-10 pt-10 text-secondary text-left'
+          'container mx-auto w-1/2 space-y-5 pb-10 pt-20 text-secondary text-left'
         }
       >
-        <h1 className="text-4xl" id="introduction">
+        <h1 className="text-2xl bg-primary-800 p-4 rounded" id="introduction">
           Introduction
         </h1>
         <p className="text-m">
@@ -42,166 +41,177 @@ const Docs = () => {
           developer can be on developing cool features instead!
         </p>
         <p className="text-m">
-          Pear is a framework with the intention to help developers build full
-          stack software solutions, by providing an out-of-the-box template to
-          generate a project, with a frontend, backend consisting of
+          Exemplar is a framework with the intention to help developers build
+          full stack software solutions, by providing an out-of-the-box template
+          to generate a project, with a frontend, backend consisting of
           microservices, message queue and a DevOps setup with pipelines for
-          automatic testing and deployment. The motivation behind this is to
-          ensure a software project doesn't run in to scalability issues,
-          security issues and in general help the project evolving in a
-          direction that satisfy both short-term, but especially long-term
-          requirements. From the rest of the documentation page, we will use the
-          name Orange to specify, that we are talking about the generated
-          project.
+          automatic testing and deployment. The motivation behind this is, to
+          ensure a software project doesn't run in to scalability issues, and in
+          general help the project evolving in a direction that satisfy both
+          short-term, but especially long-term requirements. From the rest of
+          the documentation page, we will focus on the project that exemplar
+          generates for you.
         </p>
-        <h2 className="text-2xl" id="how-does-it-work">
+        <h2
+          className="text-xl bg-primary-800 p-2 rounded"
+          id="how-does-it-work"
+        >
           How does it work?
         </h2>
         <p className="text-m">
           Imagine you, a developer, wants to start a new project. What would be
           the first steps you take? Probably picking an adequate frontend and
-          backend technology and create a Git repository to utilise version
-          control. By looking at the diagram, the idea behind Pear is, that you
-          are asked to authorise your Github account and choose a project name
-          and a project is generated for you, with a frontend application, a
-          message queue and two microservices.
+          backend technology and create a Git repository. Afterwards, you would
+          probably setup some testing framework, write a pipeline to ensure
+          automatic deployment to a cloud and more. By looking at the diagram,
+          the idea behind Exemplar is, that all of this is provied to you
+          already. You are simply asked to authorise your Github account and
+          choose a project name and a project is generated for you. (Fix img
+          below - looks ugly)
         </p>
-        <img
-          src={process.env.PUBLIC_URL + '/docs/overview.png'}
-          alt="overview"
-          className="w-3/4 m-auto"
-        />
-        <h2 className="text-2xl" id="tech-stack">
+        <div>
+          <img
+            src={process.env.PUBLIC_URL + '/docs/overview.png'}
+            alt="overview"
+            className="w-2/4 m-auto rounded-lg"
+          />
+        </div>
+        <h2 className="text-xl bg-primary-800 p-2 rounded" id="tech-stack">
           Tech stack
         </h2>
         <p className="text-m">
-          In this section the generated tech stack will briefly be mentioned,
-          and later on a more in-depth walk-through of Orange will be
-          introduced.
-          {<span className="font-bold"> All</span>} of the following
-          applications are dockerized
+          Before we are diving deeper into what exactly is generated, we would
+          just like to show the tech stack that you will have available in your
+          generated project.
         </p>
-        <ul className="list-disc">
+        <ul className="list-disc pl-8 text-sm font-mono bg-gray-800 rounded p-4">
+          <li>React with TypeScript (Dockerized) ✅</li>
+          <li>Nestjs applications with Typescript (Dockerized) ✅</li>
+          <li>Redis (Dockerized) ✅</li>
+          <li>Git submodules ✅</li>
+          <li>Github actions ✅</li>
+          <li>Github pages ✅</li>
+          <li>Docker-compose ✅</li>
+          <li>Webdriver.io (Selenium grid) ✅</li>
+          <li>Postman automation ✅</li>
           <li>
-            The frontend application is a React application with Typescript
-          </li>
-          <li>The microservices are Nestjs applications with Typescript</li>
-          <li>A RabbitMQ which is already setup and both microservices use</li>
-          <li>
-            Git modules with the frontend application and two microservice
-            applications in a root repository
-          </li>
-          <li>
-            Docker-compose that spins up the whole system, so development can
-            start immediately
+            Kubernetes integration including deployment files for each app ✅
           </li>
         </ul>
-        <h1 className="text-4xl" id="whats-generated">
+        <h1
+          className="text-2xl  bg-primary-800 p-4 rounded"
+          id="whats-generated"
+        >
           What's generated
         </h1>
-        <p className="text-secondary text-m text-left">
-          So what exactly happens after you click the button "Generate project"?
-          In this section we'll cover the the different components that we
-          generate for you.
+        <p className="text-m">
+          Now, let's get into what Exemplar generates for you. There are three
+          main applications, a frontend and two microservices; all three are
+          dockerized. Besides that, there are test suites, build, test,
+          deployment pipelines as well as docker orchestration tools. A lot of
+          these technologies does not live in a specific app, but cross-app. It
+          might seem counter-intuitive to develop microservices and still rely
+          on some sort of centralization, but for example E2E tests or
+          orchestration tools such as Kubernetes simply needs to be in a
+          centralized context. Therefore, it makes sense to start explaining the
+          root project.
         </p>
-        <h2 className="text-2xl" id="root-repository">
-          Root repository
+        <h2
+          className="text-xl bg-primary-800 p-2 rounded"
+          id="frontend-repository"
+        >
+          Frontend
         </h2>
         <p className="text-m">
-          When we are done generating the code for you, you will be presented
-          with a link to the root repository. This will look similar to the
-          screenshot seen below. The root project will be a stand alone Github
-          repository which contains references to all the repositories we have
-          generated. The different references are so called{' '}
-          <a
-            href="https://git-scm.com/book/en/v2/Git-Tools-Submodules"
-            target="_blank"
-          >
-            submodules
-          </a>
-          . Which are basically just links to other stand alone repositories -
-          but it allows you to clone (download) the entire project in one go!
-        </p>
-        <p>
-          Apart from the submodule references, the root project also contains a
-          <a href="https://docs.docker.com/compose/" target="_blank">
-            {' '}
-            docker-compose
-          </a>{' '}
-          file. With this file, after you've downloaded the project, you can
-          spin up the entire thing with the command docker-compose up. To allow
-          for this, we have wrapped each component of the project in a container
-          with a Dockerfile. But more about this in the "Workflow" section.
-        </p>
-        <img
-          src={process.env.PUBLIC_URL + '/docs/root.png'}
-          alt="overview"
-          className="w-3/4 m-auto"
-        />
-        <h2 className="text-2xl" id="frontend-repository">
-          Frontend repository
-        </h2>
-        <p className="text-m">
-          So, the most flashy part of your newly generated project is definitely
-          the frontend. This repository has the code for an entire web
-          application developed in{' '}
+          The frontend is the users' way of interacting with the system. We have
+          decided to use the{' '}
           <a href="https://reactjs.org/" target="_blank">
             ReactJS
-          </a>
-          ! We have chosen to use{' '}
+          </a>{' '}
+          and specifically, combined with{' '}
           <a href="https://www.typescriptlang.org/" target="_blank">
             Typescript
           </a>{' '}
-          as the development language for the web application, but you can also
-          develop ReactJS web apps in Javascript.
+          .
         </p>
         <p className="text-m">
-          Just like all the other repositories we generate for you, we have
-          wrapped the frontend in a docker container. The configurations for the
-          docker container can be found in the Dockerfile - it allows you to run
-          the frontend in pretty much any environment, abstracting away the OS
-          details of the specific environment you're in.
+          The frontend contains a simple login component, that allows the user
+          to authenticate themselves with a username and a password to the
+          generated backend. For the frontend it has been chosen to have a bare
+          minimum of functionality, and instead the focus has been on the
+          creating the infrastructure to develop, test and deploy it.
+          Specifically, the following functionality is included in the frontend.
         </p>
-        <p className="text-m">
-          From the get go, the frontend contains a simple login component, that
-          allows the user to authenticate themselves with a username and a
-          password. When you log in, the web application actually communicates
-          with the backend which is divided into two repositories. The Api
-          repository and the MS repository.
+        <ul className="list-disc pl-8 text-sm font-mono bg-gray-800 rounded p-4">
+          <li>
+            The frontend application is a ReactJS application with Typescript ✅
+          </li>
+          <li>
+            Automatic Github deployment to public URL with Github Pages ✅
+          </li>
+          <li>Selenium e2e test-suite setup ✅</li>
+          <li>Integration tests setup ✅</li>
+          <li>Unit tests setup ✅</li>
+          <li>
+            Github actions to build and test automatically, upon opening a pull
+            request ✅
+          </li>
+        </ul>
+        <h2 className="text-xl bg-primary-800 p-2 rounded" id="backend">
+          Backend
+        </h2>
+        <p>
+          The backend is the part of the system which is not run in your
+          browser. Specifically, looking at the figure below, it can be seen as
+          the white box surrounding the API gateway, AuthMS, MS and MQ.
         </p>
-        <h2 className="text-2xl" id="api-repository">
-          Api repository
+        <p>
+          As it is, the backend’s current functionality is to authenticate users
+          and that's it. As mentioned in the frontend section, the focus is to
+          create the infrastructure to develop a scalable and flexible
+          application. To authenticate a user, all of the components below are
+          triggered (except MS, but we will explain that a bit later).
+        </p>
+        <img
+          src={process.env.PUBLIC_URL + '/docs/generated_app_architecture.svg'}
+          alt="overview"
+          className="w-3/6 m-auto"
+        />
+        <h2 className="text-m bg-primary-800 p-1 rounded" id="backend">
+          API gateway
         </h2>
         <p className="text-m">
-          The Api repository is the gateway into your backend. It's a standalone
+          The API gateway is the point that the frontend can interact with
+          through Rest. It is developed in{' '}
           <a href="https://nestjs.com/" target="_blank">
             {' '}
-            nestJS project
+            NestJS
           </a>{' '}
-          written in Typescript, which serves the API to the outside world - and
-          in this case it serves the frontend web application we generated for
-          you. In this project you write the different endpoints you want to
-          have for your backend. To allow the user to login we have already
-          created a /login endpoint, which expects a username and a password as
-          input. These details will be forwarded to the relevant microservice
-          through a RabbitMQ message queue. In the case of the login endpoint
-          the relevant microservice is the user microservice, which has its own
-          standalone repository - the user-ms repository which is up next!
+          . The API gateways responsibility is to provide the infrastructure for
+          the communication between the frontend and backend in this scenario.
         </p>
-
-        <h2 className="text-2xl" id="user-ms-repository">
-          User ms repository
-        </h2>
-        <p className="text-m">
-          The user-ms repository is the microservice dedicated to handling
-          everything regarding the users of your application. Just like the Api
-          repository, this is a NestJS project written in Typescript. Instead of
-          hosting Rest endpoint, it listens to the RabbitMQ message queue for
-          messages. From the get go we have set it up to listen for a login
-          message, with login credentials. When a login message is received it
-          checks an in-memory database with users, to see if the credentials
-          match. If the credentials match, a Json Web Token is generated and
-          sent back through the RabbitMQ message queue. Using JWTs for
+        <p>
+          The API gateway listens on port 3000 and it serves one endpoint, the
+          /login endpoint. The endpoint will put a message on the message queue,
+          saying that an authentication task is ready to be picked up. This is
+          also why it is called the API gateway, because its task is to delegate
+          the communication in the app. The actual authentication logic resides
+          in the AuthMS.
+        </p>
+        <h2 className="text-m bg-primary-800 p-1 rounded">AuthMS</h2>
+        <p>
+          The The AuthMS microservice cannot be interacted through rest, as it
+          is with the API gateway. The AuthMS can be interacted with through
+          messages put on the message queue. Just like the API gateway, this is
+          a NestJS project written in Typescript.
+        </p>
+        <p>
+          It connects to the message queue and listens for messages with the
+          login id. When a message with the login id is put on the queue, it
+          will consume it and verify if the user is an authenticated user or
+          not. If the user is authenticated, it will return a JWT (JSON web
+          token) and if not, a new unauthorized exception will be thrown and the
+          user will receive a 401 Unauthorized status code. Using JWTs for
           authentication is a very popular and highly scalable method of
           implementing authentication - you can read a lot more about it on the
           <a href="https://jwt.io/" target="_blank">
@@ -210,6 +220,114 @@ const Docs = () => {
           </a>
           website.
         </p>
+        <h2 className="text-m bg-primary-800 p-1 rounded">
+          Summary of the features the backend has
+        </h2>
+        <ul className="list-disc pl-8 text-sm font-mono bg-gray-800 rounded p-4">
+          <li>API gateway written in NestJS ✅</li>
+          <li>Authentication microservice written in NestJS ✅</li>
+          <li>Empty (extendable microservice) written in NestJS ✅</li>
+          <li>
+            All three of the above services in their Github repositories
+            (submodules) ✅
+          </li>
+          <li>Dockerization by all of the above services ✅</li>
+          <li>Message queue using Redis ✅</li>
+          <li>Postman Automation e2e tests for API gateway ✅</li>
+          <li>Integration tests for backend ✅</li>
+          <li>Unit tests for backend ✅</li>
+          <li>
+            Github actions to build and test automatically, upon opening a pull
+            request ✅
+          </li>
+        </ul>
+        <h2 className="text-xl bg-primary-800 p-2 rounded" id="root-repository">
+          Root repository (System)
+        </h2>
+        <p className="text-m">
+          Now, you might think there is a missing link, which comes now. Even
+          though we seek to decouple the different apps as much as possible,
+          when it comes to testing and managing the applications in a production
+          context, there needs to be some sort of centralization. This is done
+          by having a root git project.
+        </p>
+        <p>
+          The root project will be a stand alone Github repository which
+          contains references to all the repositories we have generated. The
+          different references are so called{' '}
+          <a
+            href="https://git-scm.com/book/en/v2/Git-Tools-Submodules"
+            target="_blank"
+          >
+            submodules
+          </a>
+          , which are links to other stand alone repositories - hence, it is not
+          a nested repository. This means that the different git submodule apps,
+          can also be cloned and developed independently if desired.
+        </p>
+        <p>
+          Apart from the submodule references, the root project also contains a
+          <a href="https://docs.docker.com/compose/" target="_blank">
+            {' '}
+            docker-compose
+          </a>{' '}
+          file. With this file, after you've downloaded the project, you can
+          spin up the entire project with the command docker-compose up. This is
+          because all three apps are dockerized as mentioned before.
+        </p>
+        <p>
+          Docker-compose is a good tool for local docker-orchestration, but in a
+          production context it is inadequate. Therefore, there is also provided
+          support to deploy the application using{' '}
+          <a href="https://kubernetes.io/" target="_blank">
+            {' '}
+            Kubernetes
+          </a>
+          . Below is an example of the application could be deployed using
+          Kubernetes, and it is showing a state with multiple service pods. This
+          could indicate that the MS pods have been under some load, and
+          therefore the system deemed it necessary to deploy several pods.
+        </p>
+        <img
+          src={process.env.PUBLIC_URL + '/docs/system_diagram_k8.svg'}
+          alt="overview"
+          className="w-4/6 m-auto"
+        />
+        <p>
+          Seen below is the folder structure of the generated app, where the
+          building, deployment, orchestration files and more is shown. DevOps
+          pipelines and Github actions will be shown later.
+        </p>
+        <img
+          src={process.env.PUBLIC_URL + '/docs/git_structure.png'}
+          alt="overview"
+          className="w-5/6 m-auto"
+        />
+        <p>
+          Specifically, the files above means that the project supports the
+          following features:
+        </p>
+        <ul className="list-disc pl-8 text-sm font-mono bg-gray-800 rounded p-4">
+          <li>
+            Docker orchestration for local development using docker-compose ✅
+          </li>
+          <li>
+            Deployment files used to deploy the microservices and Redis into
+            Kubernetes clusters either locally or on a cloud-provider ✅
+          </li>
+          <li>
+            Local deployment, scaling and management of containerized
+            applications using Kubernetes and minikube ✅
+          </li>
+          <li>
+            Guide on how to deploy the backend on Amazons EKS (Elastic
+            Kubernetes service) ✅
+          </li>
+          <li>Script to build all Docker images ✅</li>
+        </ul>
+        <h2 className="text-xl bg-primary-800 p-2 rounded" id="DevOps">
+          DevOps
+        </h2>
       </main>
     </>
   );

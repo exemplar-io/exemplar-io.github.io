@@ -1,58 +1,56 @@
-import React from 'react';
-
 const Sidebar = () => {
   return (
-    <div className="h-screen w-1/6 ml-0 pt-20 top-0 fixed bg-gray-700 flex flex-col space-y-3">
-      <div className="flex flex-col space-y-3 bg-gray-600 rounded p-4">
+    <div className="h-screen w-1/6 ml-0 pt-20 top-0 fixed flex flex-col space-y-3">
+      <div className="flex flex-col space-y-3 bg-primary-900 rounded p-4">
         <a
-          className="sticky text-secondary font-medium text-xl"
+          className="sticky text-secondary font-medium text-xl  hover:font-bold"
           href="#introduction"
         >
           Introduction
         </a>
         <a
-          className="sticky text-secondary text-m font-light"
+          className="sticky text-secondary text-m font-light hover:font-medium"
           href="#how-does-it-work"
         >
           How does it work?
         </a>
         <a
-          className="sticky text-secondary text-m font-light"
+          className="sticky text-secondary text-m font-light hover:font-medium"
           href="#tech-stack"
         >
           Tech stack
         </a>
       </div>
-      <div className="flex flex-col space-y-3 bg-gray-600 rounded p-4">
+      <div className="flex flex-col space-y-3 bg-primary-900 rounded p-4">
         <a
-          className="sticky text-secondary font-medium text-xl"
+          className="sticky text-secondary font-medium text-xl hover:font-bold"
           href="#whats-generated"
         >
           What's generated
         </a>
         <a
-          className="sticky text-secondary text-m font-light"
-          href="#root-repository"
-        >
-          Root repository
-        </a>
-        <a
-          className="sticky text-secondary text-m font-light"
+          className="sticky text-secondary text-m font-light hover:font-medium"
           href="#frontend-repository"
         >
-          Frontend repository
+          Frontend
         </a>
         <a
-          className="sticky text-secondary text-m font-light"
-          href="#api-repository"
+          className="sticky text-secondary text-m font-light hover:font-medium"
+          href="#backend"
         >
-          Api repository
+          Backend
         </a>
         <a
-          className="sticky text-secondary text-m font-light"
-          href="#user-ms-repository"
+          className="sticky text-secondary text-m font-light hover:font-medium"
+          href="#root-repository"
         >
-          User ms repository
+          Root repository (System)
+        </a>
+        <a
+          className="sticky text-secondary text-m font-light hover:font-medium"
+          href="#DevOps"
+        >
+          DevOps
         </a>
       </div>
     </div>

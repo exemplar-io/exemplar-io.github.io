@@ -7,7 +7,7 @@ import { menu as menuIcon } from '../../icons';
 const NavigationBar = () => {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   return (
-    <nav className="sticky w-full flex flex-wrap items-center justify-between px-2 py-3 h-16 z-10">
+    <nav className="fixed w-full flex flex-wrap items-center justify-between px-2 py-3 h-16 z-10">
       <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
         <div className="w-full flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
           <NavLink
