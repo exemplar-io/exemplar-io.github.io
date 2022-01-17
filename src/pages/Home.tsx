@@ -112,12 +112,17 @@ const Home = () => {
                 disabled={!token || !projectName}
               />
             </div>
-            {/*<div>*/}
-            {/*  <PrimaryButton*/}
-            {/*    title="Delete Repositories"*/}
-            {/*    onClick={onDeleteReposClick}*/}
-            {/*  />*/}
-            {/*</div>*/}
+            {process.env.REACT_APP_ENVIRONMENT === 'dev' ? (
+              <div>
+                <PrimaryButton
+                  title="Delete Repositories"
+                  onClick={onDeleteReposClick}
+                />
+              </div>
+            ) : (
+              <div />
+            )}
+
             <div>{loading ? <Spinner /> : null}</div>
           </div>
 
