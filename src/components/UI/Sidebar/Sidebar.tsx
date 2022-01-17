@@ -1,9 +1,7 @@
-import React from 'react';
-
 const Sidebar = () => {
   return (
-    <div className="h-screen w-1/6 ml-0 pt-20 top-0 fixed bg-gray-700 flex flex-col space-y-3">
-      <div className="flex flex-col space-y-3 bg-gray-600 rounded p-4">
+    <div className="h-screen w-1/6 ml-0 pt-20 top-0 fixed flex flex-col space-y-3">
+      <div className="flex flex-col space-y-3 bg-primary-900 rounded p-4">
         <a
           className="sticky text-secondary font-medium text-xl"
           href="#introduction"
@@ -23,7 +21,7 @@ const Sidebar = () => {
           Tech stack
         </a>
       </div>
-      <div className="flex flex-col space-y-3 bg-gray-600 rounded p-4">
+      <div className="flex flex-col space-y-3 bg-primary-900 rounded p-4">
         <a
           className="sticky text-secondary font-medium text-xl"
           href="#whats-generated"

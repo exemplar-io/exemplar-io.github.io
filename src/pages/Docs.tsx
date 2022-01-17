@@ -1,4 +1,3 @@
-import React from 'react';
 import Sidebar from '../components/UI/Sidebar/Sidebar';
 
 // How to create a code block
@@ -27,10 +26,10 @@ const Docs = () => {
       <Sidebar />
       <main
         className={
-          'container mx-auto w-1/2 space-y-5 pb-10 pt-10 text-secondary text-left'
+          'container mx-auto w-1/2 space-y-5 pb-10 pt-20 text-secondary text-left'
         }
       >
-        <h1 className="text-4xl" id="introduction">
+        <h1 className="text-2xl bg-primary-800 p-4 rounded" id="introduction">
           Introduction
         </h1>
         <p className="text-m">
@@ -42,69 +41,94 @@ const Docs = () => {
           developer can be on developing cool features instead!
         </p>
         <p className="text-m">
-          Pear is a framework with the intention to help developers build full
-          stack software solutions, by providing an out-of-the-box template to
-          generate a project, with a frontend, backend consisting of
+          Exemplar is a framework with the intention to help developers build
+          full stack software solutions, by providing an out-of-the-box template
+          to generate a project, with a frontend, backend consisting of
           microservices, message queue and a DevOps setup with pipelines for
-          automatic testing and deployment. The motivation behind this is to
-          ensure a software project doesn't run in to scalability issues,
-          security issues and in general help the project evolving in a
-          direction that satisfy both short-term, but especially long-term
-          requirements. From the rest of the documentation page, we will use the
-          name Orange to specify, that we are talking about the generated
-          project.
+          automatic testing and deployment. The motivation behind this is, to
+          ensure a software project doesn't run in to scalability issues, and in
+          general help the project evolving in a direction that satisfy both
+          short-term, but especially long-term requirements. From the rest of
+          the documentation page, we will focus on the project that exemplar
+          generates for you.
         </p>
-        <h2 className="text-2xl" id="how-does-it-work">
+        <h2
+          className="text-xl bg-primary-800 p-2 rounded"
+          id="how-does-it-work"
+        >
           How does it work?
         </h2>
         <p className="text-m">
           Imagine you, a developer, wants to start a new project. What would be
           the first steps you take? Probably picking an adequate frontend and
-          backend technology and create a Git repository to utilise version
-          control. By looking at the diagram, the idea behind Pear is, that you
-          are asked to authorise your Github account and choose a project name
-          and a project is generated for you, with a frontend application, a
-          message queue and two microservices.
+          backend technology and create a Git repository. Afterwards, you would
+          probably setup some testing framework, write a pipeline to ensure
+          automatic deployment to a cloud and more. By looking at the diagram,
+          the idea behind Exemplar is, that all of this is provied to you
+          already. You are simply asked to authorise your Github account and
+          choose a project name and a project is generated for you.
         </p>
-        <img
-          src={process.env.PUBLIC_URL + '/docs/overview.png'}
-          alt="overview"
-          className="w-3/4 m-auto"
-        />
-        <h2 className="text-2xl" id="tech-stack">
+        <div>
+          <img
+            src={process.env.PUBLIC_URL + '/docs/overview.png'}
+            alt="overview"
+            className="w-2/4 m-auto rounded-lg"
+          />
+        </div>
+        <h2 className="text-xl bg-primary-800 p-2 rounded" id="tech-stack">
           Tech stack
         </h2>
         <p className="text-m">
-          In this section the generated tech stack will briefly be mentioned,
-          and later on a more in-depth walk-through of Orange will be
-          introduced.
+          Before we are diving deeper into what exactly is generated, we would
+          just like to show the tech stack that you will have available in your
+          generated project.
+        </p>
+        <ul className="list-disc pl-8 text-sm font-mono bg-gray-800 rounded p-4">
+          <li>React with TypeScrip (Dockerized) ✅</li>
+          <li>Nestjs applications with Typescript (Dockerized) ✅</li>
+          <li>Redis (Dockerized) ✅</li>
+          <li>Git submodules ✅</li>
+          <li>Github actions ✅</li>
+          <li>Github pages ✅</li>
+          <li>Docker-compose ✅</li>
+          <li>Webdriver.io (Selenium grid) ✅</li>
+          <li>Postman automation ✅</li>
+          <li>
+            Kubernetes integration including deployment files for each app ✅
+          </li>
+        </ul>
+        <h1
+          className="text-2xl  bg-primary-800 p-4 rounded"
+          id="whats-generated"
+        >
+          What's generated
+        </h1>
+        <p className="text-m">
+          You can get a complete overview of what you get when you generate a
+          project with Exemplar below.
           {<span className="font-bold"> All</span>} of the following
           applications are dockerized
         </p>
-        <ul className="list-disc">
+        <p className="text-xl bg-primary-800 p-2 rounded">Frontend</p>
+        <ul className="list-disc pl-8">
           <li>
             The frontend application is a React application with Typescript
           </li>
-          <li>The microservices are Nestjs applications with Typescript</li>
-          <li>A RabbitMQ which is already setup and both microservices use</li>
+          <li>Automatic Github deployment to public URL with Github Pages</li>
+          <li>Selenium e2e test-suite setup and example test</li>
+          <li>Integration tests setup and example test</li>
+          <li>Unit tests setup and example test</li>
           <li>
-            Git modules with the frontend application and two microservice
-            applications in a root repository
-          </li>
-          <li>
-            Docker-compose that spins up the whole system, so development can
-            start immediately
+            Github actions to build and test automatically, upon opening a pull
+            request
           </li>
         </ul>
-        <h1 className="text-4xl" id="whats-generated">
-          What's generated
-        </h1>
         <p className="text-secondary text-m text-left">
           So what exactly happens after you click the button "Generate project"?
           In this section we'll cover the the different components that we
           generate for you.
         </p>
-        <h2 className="text-2xl" id="root-repository">
+        <h2 className="text-xl bg-primary-800 p-2 rounded" id="root-repository">
           Root repository
         </h2>
         <p className="text-m">
@@ -136,9 +160,12 @@ const Docs = () => {
         <img
           src={process.env.PUBLIC_URL + '/docs/root.png'}
           alt="overview"
-          className="w-3/4 m-auto"
+          className="w-3/4 m-auto rounded-lg"
         />
-        <h2 className="text-2xl" id="frontend-repository">
+        <h2
+          className="text-xl bg-primary-800 p-2 rounded"
+          id="frontend-repository"
+        >
           Frontend repository
         </h2>
         <p className="text-m">
@@ -169,7 +196,7 @@ const Docs = () => {
           with the backend which is divided into two repositories. The Api
           repository and the MS repository.
         </p>
-        <h2 className="text-2xl" id="api-repository">
+        <h2 className="text-xl bg-primary-800 p-2 rounded" id="api-repository">
           Api repository
         </h2>
         <p className="text-m">
@@ -188,8 +215,10 @@ const Docs = () => {
           the relevant microservice is the user microservice, which has its own
           standalone repository - the user-ms repository which is up next!
         </p>
-
-        <h2 className="text-2xl" id="user-ms-repository">
+        <h2
+          className="text-xl bg-primary-800 p-2 rounded"
+          id="user-ms-repository"
+        >
           User ms repository
         </h2>
         <p className="text-m">
