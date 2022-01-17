@@ -85,7 +85,7 @@ const Docs = () => {
           generated project.
         </p>
         <ul className="list-disc pl-8 text-sm font-mono bg-gray-800 rounded p-4">
-          <li>React with TypeScrip (Dockerized) ✅</li>
+          <li>React with TypeScript (Dockerized) ✅</li>
           <li>Nestjs applications with Typescript (Dockerized) ✅</li>
           <li>Redis (Dockerized) ✅</li>
           <li>Git submodules ✅</li>
@@ -116,22 +116,154 @@ const Docs = () => {
           centralized context. Therefore, it makes sense to start explaining the
           root project.
         </p>
+        <h2
+          className="text-xl bg-primary-800 p-2 rounded"
+          id="frontend-repository"
+        >
+          Frontend
+        </h2>
+        <p className="text-m">
+          The frontend is the users' way of interacting with the system. We have
+          decided to use the{' '}
+          <a href="https://reactjs.org/" target="_blank">
+            ReactJS
+          </a>{' '}
+          and specifically, combined with{' '}
+          <a href="https://www.typescriptlang.org/" target="_blank">
+            Typescript
+          </a>{' '}
+          .
+        </p>
+        <p className="text-m">
+          The frontend contains a simple login component, that allows the user
+          to authenticate themselves with a username and a password to the
+          generated backend. For the frontend it has been chosen to have a bare
+          minimum of functionality, and instead the focus has been on the
+          creating the infrastructure to develop, test and deploy it.
+          Specifically, the following functionality is included in the frontend.
+        </p>
+        <ul className="list-disc pl-8 text-sm font-mono bg-gray-800 rounded p-4">
+          <li>
+            The frontend application is a ReactJS application with Typescript ✅
+          </li>
+          <li>
+            Automatic Github deployment to public URL with Github Pages ✅
+          </li>
+          <li>Selenium e2e test-suite setup ✅</li>
+          <li>Integration tests setup ✅</li>
+          <li>Unit tests setup ✅</li>
+          <li>
+            Github actions to build and test automatically, upon opening a pull
+            request ✅
+          </li>
+        </ul>
+        <h2 className="text-xl bg-primary-800 p-2 rounded" id="backend">
+          Backend
+        </h2>
+        <p>
+          The backend is the part of the system which is not run in your
+          browser. Specifically, looking at the figure below, it can be seen as
+          the white box surrounding the API gateway, AuthMS, MS and MQ.
+        </p>
+        <p>
+          As it is, the backend’s current functionality is to authenticate users
+          and that's it. As mentioned in the frontend section, the focus is to
+          create the infrastructure to develop a scalable and flexible
+          application. To authenticate a user, all of the components below are
+          triggered (except MS, but we will explain that a bit later).
+        </p>
+        <img
+          src={process.env.PUBLIC_URL + '/docs/generated_app_architecture.svg'}
+          alt="overview"
+          className="w-3/6 m-auto"
+        />
+        <h2 className="text-m bg-primary-800 p-1 rounded" id="backend">
+          API gateway
+        </h2>
+        <p className="text-m">
+          The API gateway is the point that the frontend can interact with
+          through Rest. It is developed in{' '}
+          <a href="https://nestjs.com/" target="_blank">
+            {' '}
+            NestJS
+          </a>{' '}
+          . The API gateways responsibility is to provide the infrastructure for
+          the communication between the frontend and backend in this scenario.
+        </p>
+        <p>
+          The API gateway listens on port 3000 and it serves one endpoint, the
+          /login endpoint. The endpoint will put a message on the message queue,
+          saying that an authentication task is ready to be picked up. This is
+          also why it is called the API gateway, because its task is to delegate
+          the communication in the app. The actual authentication logic resides
+          in the AuthMS.
+        </p>
+        <h2 className="text-m bg-primary-800 p-1 rounded">AuthMS</h2>
+        <p>
+          The The AuthMS microservice cannot be interacted through rest, as it
+          is with the API gateway. The AuthMS can be interacted with through
+          messages put on the message queue. Just like the API gateway, this is
+          a NestJS project written in Typescript.
+        </p>
+        <p>
+          It connects to the message queue and listens for messages with the
+          login id. When a message with the login id is put on the queue, it
+          will consume it and verify if the user is an authenticated user or
+          not. If the user is authenticated, it will return a JWT (JSON web
+          token) and if not, a new unauthorized exception will be thrown and the
+          user will receive a 401 Unauthorized status code. Using JWTs for
+          authentication is a very popular and highly scalable method of
+          implementing authentication - you can read a lot more about it on the
+          <a href="https://jwt.io/" target="_blank">
+            {' '}
+            jwt.io{' '}
+          </a>
+          website.
+        </p>
+        <h2 className="text-m bg-primary-800 p-1 rounded">
+          Summary of the features the backend has
+        </h2>
+        <ul className="list-disc pl-8 text-sm font-mono bg-gray-800 rounded p-4">
+          <li>API gateway written in NestJS ✅</li>
+          <li>Authentication microservice written in NestJS ✅</li>
+          <li>Empty (extendable microservice) written in NestJS ✅</li>
+          <li>
+            All three of the above services in their Github repositories
+            (submodules) ✅
+          </li>
+          <li>Dockerization by all of the above services ✅</li>
+          <li>Message queue using Redis ✅</li>
+          <li>Postman Automation e2e tests for API gateway ✅</li>
+          <li>Integration tests for backend ✅</li>
+          <li>Unit tests for backend ✅</li>
+          <li>
+            Github actions to build and test automatically, upon opening a pull
+            request ✅
+          </li>
+        </ul>
         <h2 className="text-xl bg-primary-800 p-2 rounded" id="root-repository">
           Root repository (System)
         </h2>
         <p className="text-m">
-          When we are done generating the code for you, you will be presented
-          with a link to the root repository. The root project will be a stand
-          alone Github repository which contains references to all the
-          repositories we have generated. The different references are so called{' '}
+          Now, you might think there is a missing link, which comes now. Even
+          though we seek to decouple the different apps as much as possible,
+          when it comes to testing and managing the applications in a production
+          context, there needs to be some sort of centralization. This is done
+          by having a root git project.
+        </p>
+        <p>
+          The root project will be a stand alone Github repository which
+          contains references to all the repositories we have generated. The
+          different references are so called{' '}
           <a
             href="https://git-scm.com/book/en/v2/Git-Tools-Submodules"
             target="_blank"
           >
             submodules
           </a>
-          , which are basically just links to other stand alone repositories -
-          but it allows you to clone (download) the entire project in one go!
+          , which are links to other stand alone repositories - hence, it is not
+          a nested repository. This means that the different git submodule apps,
+          can also be cloned and developed independently if desired.
         </p>
         <p>
           Apart from the submodule references, the root project also contains a
@@ -142,6 +274,8 @@ const Docs = () => {
           file. With this file, after you've downloaded the project, you can
           spin up the entire project with the command docker-compose up. This is
           because all three apps are dockerized as mentioned before.
+        </p>
+        <p>
           Docker-compose is a good tool for local docker-orchestration, but in a
           production context it is inadequate. Therefore, there is also provided
           support to deploy the application using{' '}
@@ -191,96 +325,9 @@ const Docs = () => {
           </li>
           <li>Script to build all Docker images ✅</li>
         </ul>
-        <h2
-          className="text-xl bg-primary-800 p-2 rounded"
-          id="frontend-repository"
-        >
-          Frontend repository
+        <h2 className="text-xl bg-primary-800 p-2 rounded" id="DevOps">
+          DevOps
         </h2>
-        <ul className="list-disc pl-8">
-          <li>
-            The frontend application is a React application with Typescript
-          </li>
-          <li>Automatic Github deployment to public URL with Github Pages</li>
-          <li>Selenium e2e test-suite setup and example test</li>
-          <li>Integration tests setup and example test</li>
-          <li>Unit tests setup and example test</li>
-          <li>
-            Github actions to build and test automatically, upon opening a pull
-            request
-          </li>
-        </ul>
-        <p className="text-m">
-          So, the most flashy part of your newly generated project is definitely
-          the frontend. This repository has the code for an entire web
-          application developed in{' '}
-          <a href="https://reactjs.org/" target="_blank">
-            ReactJS
-          </a>
-          ! We have chosen to use{' '}
-          <a href="https://www.typescriptlang.org/" target="_blank">
-            Typescript
-          </a>{' '}
-          as the development language for the web application, but you can also
-          develop ReactJS web apps in Javascript.
-        </p>
-        <p className="text-m">
-          Just like all the other repositories we generate for you, we have
-          wrapped the frontend in a docker container. The configurations for the
-          docker container can be found in the Dockerfile - it allows you to run
-          the frontend in pretty much any environment, abstracting away the OS
-          details of the specific environment you're in.
-        </p>
-        <p className="text-m">
-          From the get go, the frontend contains a simple login component, that
-          allows the user to authenticate themselves with a username and a
-          password. When you log in, the web application actually communicates
-          with the backend which is divided into two repositories. The Api
-          repository and the MS repository.
-        </p>
-        <h2 className="text-xl bg-primary-800 p-2 rounded" id="api-repository">
-          Api repository
-        </h2>
-        <p className="text-m">
-          The Api repository is the gateway into your backend. It's a standalone
-          <a href="https://nestjs.com/" target="_blank">
-            {' '}
-            nestJS project
-          </a>{' '}
-          written in Typescript, which serves the API to the outside world - and
-          in this case it serves the frontend web application we generated for
-          you. In this project you write the different endpoints you want to
-          have for your backend. To allow the user to login we have already
-          created a /login endpoint, which expects a username and a password as
-          input. These details will be forwarded to the relevant microservice
-          through a RabbitMQ message queue. In the case of the login endpoint
-          the relevant microservice is the user microservice, which has its own
-          standalone repository - the user-ms repository which is up next!
-        </p>
-        <h2
-          className="text-xl bg-primary-800 p-2 rounded"
-          id="user-ms-repository"
-        >
-          User ms repository
-        </h2>
-        <p className="text-m">
-          The user-ms repository is the microservice dedicated to handling
-          everything regarding the users of your application. Just like the Api
-          repository, this is a NestJS project written in Typescript. Instead of
-          hosting Rest endpoint, it listens to the RabbitMQ message queue for
-          messages. From the get go we have set it up to listen for a login
-          message, with login credentials. When a login message is received it
-          checks an in-memory database with users, to see if the credentials
-          match. If the credentials match, a Json Web Token is generated and
-          sent back through the RabbitMQ message queue. Using JWTs for
-          authentication is a very popular and highly scalable method of
-          implementing authentication - you can read a lot more about it on the
-          <a href="https://jwt.io/" target="_blank">
-            {' '}
-            jwt.io{' '}
-          </a>
-          website.
-        </p>
       </main>
     </>
   );
