@@ -66,7 +66,8 @@ const Docs = () => {
           automatic deployment to a cloud and more. By looking at the diagram,
           the idea behind Exemplar is, that all of this is provied to you
           already. You are simply asked to authorise your Github account and
-          choose a project name and a project is generated for you.
+          choose a project name and a project is generated for you. (Fix img
+          below - looks ugly)
         </p>
         <div>
           <img
@@ -104,12 +105,98 @@ const Docs = () => {
           What's generated
         </h1>
         <p className="text-m">
-          You can get a complete overview of what you get when you generate a
-          project with Exemplar below.
-          {<span className="font-bold"> All</span>} of the following
-          applications are dockerized
+          Now, let's get into what Exemplar generates for you. There are three
+          main applications, a frontend and two microservices; all three are
+          dockerized. Besides that, there are test suites, build, test,
+          deployment pipelines as well as docker orchestration tools. A lot of
+          these technologies does not live in a specific app, but cross-app. It
+          might seem counter-intuitive to develop microservices and still rely
+          on some sort of centralization, but for example E2E tests or
+          orchestration tools such as Kubernetes simply needs to be in a
+          centralized context. Therefore, it makes sense to start explaining the
+          root project.
         </p>
-        <p className="text-xl bg-primary-800 p-2 rounded">Frontend</p>
+        <h2 className="text-xl bg-primary-800 p-2 rounded" id="root-repository">
+          Root repository (System)
+        </h2>
+        <p className="text-m">
+          When we are done generating the code for you, you will be presented
+          with a link to the root repository. The root project will be a stand
+          alone Github repository which contains references to all the
+          repositories we have generated. The different references are so called{' '}
+          <a
+            href="https://git-scm.com/book/en/v2/Git-Tools-Submodules"
+            target="_blank"
+          >
+            submodules
+          </a>
+          , which are basically just links to other stand alone repositories -
+          but it allows you to clone (download) the entire project in one go!
+        </p>
+        <p>
+          Apart from the submodule references, the root project also contains a
+          <a href="https://docs.docker.com/compose/" target="_blank">
+            {' '}
+            docker-compose
+          </a>{' '}
+          file. With this file, after you've downloaded the project, you can
+          spin up the entire project with the command docker-compose up. This is
+          because all three apps are dockerized as mentioned before.
+          Docker-compose is a good tool for local docker-orchestration, but in a
+          production context it is inadequate. Therefore, there is also provided
+          support to deploy the application using{' '}
+          <a href="https://kubernetes.io/" target="_blank">
+            {' '}
+            Kubernetes
+          </a>
+          . Below is an example of the application could be deployed using
+          Kubernetes, and it is showing a state with multiple service pods. This
+          could indicate that the MS pods have been under some load, and
+          therefore the system deemed it necessary to deploy several pods.
+        </p>
+        <img
+          src={process.env.PUBLIC_URL + '/docs/system_diagram_k8.svg'}
+          alt="overview"
+          className="w-4/6 m-auto"
+        />
+        <p>
+          Seen below is the folder structure of the generated app, where the
+          building, deployment, orchestration files and more is shown. DevOps
+          pipelines and Github actions will be shown later.
+        </p>
+        <img
+          src={process.env.PUBLIC_URL + '/docs/git_structure.png'}
+          alt="overview"
+          className="w-5/6 m-auto"
+        />
+        <p>
+          Specifically, the files above means that the project supports the
+          following features:
+        </p>
+        <ul className="list-disc pl-8 text-sm font-mono bg-gray-800 rounded p-4">
+          <li>
+            Docker orchestration for local development using docker-compose ✅
+          </li>
+          <li>
+            Deployment files used to deploy the microservices and Redis into
+            Kubernetes clusters either locally or on a cloud-provider ✅
+          </li>
+          <li>
+            Local deployment, scaling and management of containerized
+            applications using Kubernetes and minikube ✅
+          </li>
+          <li>
+            Guide on how to deploy the backend on Amazons EKS (Elastic
+            Kubernetes service) ✅
+          </li>
+          <li>Script to build all Docker images ✅</li>
+        </ul>
+        <h2
+          className="text-xl bg-primary-800 p-2 rounded"
+          id="frontend-repository"
+        >
+          Frontend repository
+        </h2>
         <ul className="list-disc pl-8">
           <li>
             The frontend application is a React application with Typescript
@@ -123,51 +210,6 @@ const Docs = () => {
             request
           </li>
         </ul>
-        <p className="text-secondary text-m text-left">
-          So what exactly happens after you click the button "Generate project"?
-          In this section we'll cover the the different components that we
-          generate for you.
-        </p>
-        <h2 className="text-xl bg-primary-800 p-2 rounded" id="root-repository">
-          Root repository
-        </h2>
-        <p className="text-m">
-          When we are done generating the code for you, you will be presented
-          with a link to the root repository. This will look similar to the
-          screenshot seen below. The root project will be a stand alone Github
-          repository which contains references to all the repositories we have
-          generated. The different references are so called{' '}
-          <a
-            href="https://git-scm.com/book/en/v2/Git-Tools-Submodules"
-            target="_blank"
-          >
-            submodules
-          </a>
-          . Which are basically just links to other stand alone repositories -
-          but it allows you to clone (download) the entire project in one go!
-        </p>
-        <p>
-          Apart from the submodule references, the root project also contains a
-          <a href="https://docs.docker.com/compose/" target="_blank">
-            {' '}
-            docker-compose
-          </a>{' '}
-          file. With this file, after you've downloaded the project, you can
-          spin up the entire thing with the command docker-compose up. To allow
-          for this, we have wrapped each component of the project in a container
-          with a Dockerfile. But more about this in the "Workflow" section.
-        </p>
-        <img
-          src={process.env.PUBLIC_URL + '/docs/root.png'}
-          alt="overview"
-          className="w-3/4 m-auto rounded-lg"
-        />
-        <h2
-          className="text-xl bg-primary-800 p-2 rounded"
-          id="frontend-repository"
-        >
-          Frontend repository
-        </h2>
         <p className="text-m">
           So, the most flashy part of your newly generated project is definitely
           the frontend. This repository has the code for an entire web
