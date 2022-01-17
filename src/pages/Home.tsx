@@ -25,11 +25,22 @@ const Home = () => {
     }
   }, [code]);
 
-  const onAuthClick = () =>
-    (window.location.href =
+  const onAuthClick = () => {
+    window.location.href =
       'https://github.com/login/oauth/authorize?client_id=' +
       process.env.REACT_APP_GITHUB_CLIENT_ID +
-      '&scope=repo delete_repo workflow');
+      '&scope=public_repo workflow ' +
+      (process.env.REACT_APP_ENVIRONMENT === 'dev' ? 'delete_repo' : '');
+
+    return (
+      <div>
+        <PrimaryButton
+          title="Delete Repositories"
+          onClick={onDeleteReposClick}
+        />
+      </div>
+    );
+  };
 
   const onOpenRepoClick = () => window.open(repoLink);
 
