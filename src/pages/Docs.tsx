@@ -1,24 +1,10 @@
+import React from 'react';
 import Sidebar from '../components/UI/Sidebar/Sidebar';
 
 // How to create a code block
 
-// import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-// import { nord } from 'react-syntax-highlighter/dist/esm/styles/prism';
-
-// const code_block = `<div className="min-h-screen bg-gray-800 text-center">
-//   <BrowserRouter>
-//     <NavigationBar />
-//     <Switch>
-//       <Route path={'/docs'} component={Docs} />
-//       <Route path={'/about'} component={About} />
-//       <Route path={'/'} component={Homepage} />
-//     </Switch>
-//   </BrowserRouter>
-// </div>`;
-//
-// <SyntaxHighlighter language="javascript" style={nord}>
-//   {code_block}
-// </SyntaxHighlighter>;
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { nord } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const Docs = () => {
   return (
@@ -30,12 +16,12 @@ const Docs = () => {
         }
       >
         <h1
-          className="text-2xl bg-primary-800 p-3 rounded font-semibold"
+          className="text-2xl border-2 bg-primary-900 bg-opacity-50 p-4 rounded"
           id="introduction"
         >
           Introduction
         </h1>
-        <p className="text-m ">
+        <p className="text-m">
           For a developer, setting up a new project from scratch can be a
           diﬀicult task. The developer has to come up with a good overall design
           and architecture, while also choosing which tech stacks to use. By
@@ -56,7 +42,7 @@ const Docs = () => {
           generates for you.
         </p>
         <h2
-          className="text-xl bg-primary-800 p-2 rounded"
+          className="text-xl border bg-primary-900 bg-opacity-50 p-2 rounded"
           id="how-does-it-work"
         >
           How does it work?
@@ -67,19 +53,21 @@ const Docs = () => {
           backend technology and create a Git repository. Afterwards, you would
           probably setup some testing framework, write a pipeline to ensure
           automatic deployment to a cloud and more. By looking at the diagram,
-          the idea behind Exemplar is, that all of this is provied to you
+          the idea behind Exemplar is, that all of this is provided to you
           already. You are simply asked to authorise your Github account and
-          choose a project name and a project is generated for you. (Fix img
-          below - looks ugly)
+          choose a project name and a project is generated for you.
         </p>
         <div>
           <img
-            src={process.env.PUBLIC_URL + '/docs/overview.png'}
+            src={process.env.PUBLIC_URL + '/docs/system.png'}
             alt="overview"
-            className="w-2/4 m-auto rounded-lg"
+            className="w-4/4 m-auto rounded-lg"
           />
         </div>
-        <h2 className="text-xl bg-primary-800 p-2 rounded" id="tech-stack">
+        <h2
+          className="text-xl border bg-primary-900 bg-opacity-50 p-2 rounded"
+          id="tech-stack"
+        >
           Tech stack
         </h2>
         <p className="text-m">
@@ -87,22 +75,22 @@ const Docs = () => {
           just like to show the tech stack that you will have available in your
           generated project.
         </p>
-        <ul className="list-disc pl-8 text-sm font-mono bg-gray-800 rounded p-4">
-          <li>React with TypeScript (Dockerized) ✅</li>
-          <li>Nestjs applications with Typescript (Dockerized) ✅</li>
-          <li>Redis (Dockerized) ✅</li>
-          <li>Git submodules ✅</li>
-          <li>Github actions ✅</li>
-          <li>Github pages ✅</li>
-          <li>Docker-compose ✅</li>
-          <li>Webdriver.io (Selenium grid) ✅</li>
-          <li>Postman automation ✅</li>
+        <ul className="list-disc pl-8 text-sm bg-gray-900 bg-opacity-50 rounded p-4">
+          <li>React with TypeScript (Dockerized)</li>
+          <li>Nestjs applications with Typescript (Dockerized)</li>
+          <li>Redis (Dockerized)</li>
+          <li>Git submodules</li>
+          <li>Github actions</li>
+          <li>Github pages</li>
+          <li>Docker-compose</li>
+          <li>Webdriver.io (Selenium grid)</li>
+          <li>Postman automation</li>
           <li>
-            Kubernetes integration including deployment files for each app ✅
+            Kubernetes integration including deployment files for each app
           </li>
         </ul>
         <h1
-          className="text-2xl  bg-primary-800 p-4 rounded"
+          className="text-2xl border-2 bg-primary-900 bg-opacity-50 p-4 rounded"
           id="whats-generated"
         >
           What's generated
@@ -120,7 +108,7 @@ const Docs = () => {
           root project.
         </p>
         <h2
-          className="text-xl bg-primary-800 p-2 rounded"
+          className="text-xl border bg-primary-900 bg-opacity-50 p-2 rounded"
           id="frontend-repository"
         >
           Frontend
@@ -145,22 +133,23 @@ const Docs = () => {
           creating the infrastructure to develop, test and deploy it.
           Specifically, the following functionality is included in the frontend.
         </p>
-        <ul className="list-disc pl-8 text-sm font-mono bg-gray-800 rounded p-4">
+        <ul className="list-disc pl-8 text-sm bg-gray-900 bg-opacity-50 rounded p-4">
           <li>
-            The frontend application is a ReactJS application with Typescript ✅
+            The frontend application is a ReactJS application with Typescript
           </li>
-          <li>
-            Automatic Github deployment to public URL with Github Pages ✅
-          </li>
-          <li>Selenium e2e test-suite setup ✅</li>
-          <li>Integration tests setup ✅</li>
-          <li>Unit tests setup ✅</li>
+          <li>Automatic Github deployment to public URL with Github Pages</li>
+          <li>Selenium e2e test-suite setup</li>
+          <li>Integration tests setup</li>
+          <li>Unit tests setup</li>
           <li>
             Github actions to build and test automatically, upon opening a pull
-            request ✅
+            request
           </li>
         </ul>
-        <h2 className="text-xl bg-primary-800 p-2 rounded" id="backend">
+        <h2
+          className="text-xl border bg-primary-900 bg-opacity-50 p-2 rounded"
+          id="backend"
+        >
           Backend
         </h2>
         <p>
@@ -180,7 +169,10 @@ const Docs = () => {
           alt="overview"
           className="w-3/6 m-auto"
         />
-        <h2 className="text-m bg-primary-800 p-1 rounded" id="backend">
+        <h2
+          className="text-m border bg-primary-900 bg-opacity-50 p-1 rounded"
+          id="backend"
+        >
           API gateway
         </h2>
         <p className="text-m">
@@ -201,7 +193,9 @@ const Docs = () => {
           the communication in the app. The actual authentication logic resides
           in the AuthMS.
         </p>
-        <h2 className="text-m bg-primary-800 p-1 rounded">AuthMS</h2>
+        <h2 className="text-m border bg-primary-900 bg-opacity-50 p-1 rounded">
+          AuthMS
+        </h2>
         <p>
           The The AuthMS microservice cannot be interacted through rest, as it
           is with the API gateway. The AuthMS can be interacted with through
@@ -223,28 +217,31 @@ const Docs = () => {
           </a>
           website.
         </p>
-        <h2 className="text-m bg-primary-800 p-1 rounded">
-          Summary of the features the backend has
+        <h2 className="text-m border bg-primary-900 bg-opacity-50 p-1 rounded">
+          Backend summary
         </h2>
-        <ul className="list-disc pl-8 text-sm font-mono bg-gray-800 rounded p-4">
-          <li>API gateway written in NestJS ✅</li>
-          <li>Authentication microservice written in NestJS ✅</li>
-          <li>Empty (extendable microservice) written in NestJS ✅</li>
+        <ul className="list-disc pl-8 text-sm bg-gray-900 bg-opacity-50 rounded p-4">
+          <li>API gateway written in NestJS</li>
+          <li>Authentication microservice written in NestJS</li>
+          <li>Empty (extendable microservice) written in NestJS</li>
           <li>
             All three of the above services in their Github repositories
-            (submodules) ✅
+            (submodules)
           </li>
-          <li>Dockerization by all of the above services ✅</li>
-          <li>Message queue using Redis ✅</li>
-          <li>Postman Automation e2e tests for API gateway ✅</li>
-          <li>Integration tests for backend ✅</li>
-          <li>Unit tests for backend ✅</li>
+          <li>Dockerization by all of the above services</li>
+          <li>Message queue using Redis</li>
+          <li>Postman Automation e2e tests for API gateway</li>
+          <li>Integration tests for backend</li>
+          <li>Unit tests for backend</li>
           <li>
             Github actions to build and test automatically, upon opening a pull
-            request ✅
+            request
           </li>
         </ul>
-        <h2 className="text-xl bg-primary-800 p-2 rounded" id="root-repository">
+        <h2
+          className="text-xl border bg-primary-900 bg-opacity-50 p-2 rounded"
+          id="root-repository"
+        >
           Root repository (System)
         </h2>
         <p className="text-m">
@@ -310,27 +307,95 @@ const Docs = () => {
           Specifically, the files above means that the project supports the
           following features:
         </p>
-        <ul className="list-disc pl-8 text-sm font-mono bg-gray-800 rounded p-4">
+        <ul className="list-disc pl-8 text-sm bg-gray-900 bg-opacity-50 rounded p-4">
           <li>
-            Docker orchestration for local development using docker-compose ✅
+            Docker orchestration for local development using docker-compose
           </li>
           <li>
             Deployment files used to deploy the microservices and Redis into
-            Kubernetes clusters either locally or on a cloud-provider ✅
+            Kubernetes clusters either locally or on a cloud-provider
           </li>
           <li>
             Local deployment, scaling and management of containerized
-            applications using Kubernetes and minikube ✅
+            applications using Kubernetes and minikube
           </li>
           <li>
             Guide on how to deploy the backend on Amazons EKS (Elastic
-            Kubernetes service) ✅
+            Kubernetes service)
           </li>
-          <li>Script to build all Docker images ✅</li>
+          <li>Script to build all Docker images</li>
         </ul>
-        <h2 className="text-xl bg-primary-800 p-2 rounded" id="DevOps">
+        <h2
+          className="text-xl border bg-opacity-50 bg-primary-800 p-2 rounded"
+          id="DevOps"
+        >
           DevOps
         </h2>
+        <p>
+          In order to ensure that the app is always functioning, and that it
+          gets deployed continuously, DevOps pipelines have been setup. Each
+          component is isolated in the sense that they have their own repository
+          and thus each have their own DevOps pipelines.
+        </p>
+        <p>
+          The process of extending one of the apps is shown below. The process
+          is started, by opening a pull request. This pull request will trigger
+          two pipelines; Unit tests and E2E tests. If they pass, you will merge
+          the PR into the master branch and you can deploy the code to
+          production, knowing that it works (if you wrote tests that actually
+          check the newly implemented code).
+        </p>
+        <img
+          src={process.env.PUBLIC_URL + '/docs/devops.png'}
+          alt="overview"
+          className="w-4/6 m-auto"
+        />
+        <p>
+          Depending on which app it is testing, the actual workflow and test
+          frameworks are a bit different.
+        </p>
+        <p>
+          For the frontend, there are unit tests, integration tests and E2E
+          tests. The unit tests are based on Jest and can be run using{' '}
+          <span className="font-mono text-primary-300">npm test</span>, where as
+          the E2E tests are based on the Selenium grid using webdriver.io. This
+          actually launches a Chromium browser running in headless state,
+          performing UI updates through the frontend.
+        </p>
+        <p>
+          It is E2E test, because we are directly interfering with the UI and
+          the tests are written, such that a user interaction calls the backend
+          and a value is expected in return; if the value is returned and
+          correct, it means that the other end, i.e. the backend has also been
+          included and therefore it is an E2E-test. This is possible because the
+          Selenium project running these E2E tests, pulls the whole application
+          and spins it up with Docker-compose
+        </p>
+        <p>
+          If the tests pass and you merge your branch into master, the code will{' '}
+          <span className="italic">automatically</span> be pushed to production,
+          i.e. Github pages. This is to ensure continuous deployment and if the
+          tests have been written correctly and they pass, there is no reason to
+          hold your release back in general.
+        </p>
+        <p>
+          For the other apps, the idea is the same as for the frontend, except
+          that continuous deployment is not included. Each app meaning the API
+          gateway, AuthMS and MS have their own testing pipelines, which include
+          unit and E2E-tests.
+        </p>
+        <p>
+          The E2E tests in the context of the backend are initiated through{' '}
+          Postman Automation tests. The Postman Automation tests will call the
+          endpoint(s) in the API gateway, and it will reach all the
+          microservices and Redis MQ.
+        </p>
+        <p>
+          The integration tests are triggering code across methods and classes,
+          but not across microservices. The responses from other microservices
+          are mocked, which could be message queue responses or API request
+          responses.
+        </p>
         <h1 className="text-2xl  bg-primary-800 p-4 rounded" id="next-steps">
           Next Steps - Development Guidelines
         </h1>
@@ -441,9 +506,89 @@ const Docs = () => {
         <h2 className="text-2xl " id="root-repository">
           Root repository
         </h2>
-        <h2 className="text-2xl" id="root-repository">
-          Root repository
+        <h2
+          className="text-xl border bg-primary-900 bg-opacity-50 p-2 rounded"
+          id="addning_new_ms"
+        >
+          Adding a new microservice
         </h2>
+        <p>
+          Sometimes extending the existing microservices are not enough, which
+          leads to the step of adding a new microservice to the project. This is
+          also the part of the project, in which it would be natural to use
+          other technologies that you are more familiar with, if you do not like
+          Nestjs or prefer something else. We will show how to add a new Nestjs
+          microservice - the initial steps are the same for other microservices
+          as well though.
+        </p>
+        <p>
+          <span className="font-bold">
+            This can be skipped if using nest CLI:
+          </span>{' '}
+          The most natural step would be to create a new git repository
+        </p>
+        <p>
+          <SyntaxHighlighter language="shell" style={nord} showLineNumbers>
+            {`mkdir new-ms-name && cd ms-name && git init`}
+          </SyntaxHighlighter>
+        </p>
+        <p>
+          Now, we will create a Nestjs app. This could however be whatever
+          technology you would want.
+        </p>
+        <p>
+          <SyntaxHighlighter language="shell" style={nord} showLineNumbers>
+            {`nest new ms-name`}
+          </SyntaxHighlighter>
+          <p>
+            It will ask you some questions about the project, such as whether to
+            use npm or yarn etc. This is up to you to chose, but we use npm.
+          </p>
+          <p>
+            The next part of the Documentation is heavily based on the{' '}
+            <a
+              href="https://docs.nestjs.com/microservices/basics/"
+              target="_blank"
+            >
+              official Nestjs documentation
+            </a>
+            . Since the backend for the generated project is already using a
+            Redis MQ, we will create a microservice using Redis. Navigate into
+            the project and install the microservice package and Redis
+          </p>
+        </p>
+        <p></p>
+        <p>
+          Once that is installed go to the{' '}
+          <span className="font-mono text-sm bg-gray-300 p-1 rounded">
+            main.ts
+          </span>{' '}
+          file. Assuming the generated app is up, Redis should already be
+          running on port 6379. Import the necessary libraries and setup the
+          connection. The file should look like this
+        </p>
+        <p>
+          <SyntaxHighlighter language="javascript" style={nord} showLineNumbers>
+            {`import { NestFactory } from '@nestjs/core';
+import { MicroserviceOptions, Transport } from '@nestjs/microservices';
+import { AppModule } from './app.module';
+
+async function bootstrap() {
+  const app = await NestFactory.createMicroservice<MicroserviceOptions>(
+    AppModule,
+    {
+      transport: Transport.REDIS,
+      options: {
+        url: 'redis://redis-master:6379',
+      },
+    },
+  );
+  await app.listen();
+}
+bootstrap();`}
+          </SyntaxHighlighter>
+        </p>
+        <p></p>
       </main>
     </>
   );
