@@ -1,7 +1,7 @@
 const Sidebar = () => {
   return (
-    <div className="h-screen w-1/6 ml-0 pt-20 top-0 fixed flex flex-col space-y-3">
-      <div className="flex flex-col space-y-3 bg-primary-900 rounded p-4">
+    <div className="h-screen w-1/6 ml-0 pt-20 top-0 fixed flex flex-col space-y-3 border-r ">
+      <div className="flex flex-col space-y-3 rounded p-4">
         <a
           className="sticky text-secondary font-medium text-xl  hover:font-bold"
           href="#introduction"
@@ -21,7 +21,7 @@ const Sidebar = () => {
           Tech stack
         </a>
       </div>
-      <div className="flex flex-col space-y-3 bg-primary-900 rounded p-4">
+      <div className="flex flex-col space-y-3 rounded p-4">
         <a
           className="sticky text-secondary font-medium text-xl hover:font-bold"
           href="#whats-generated"

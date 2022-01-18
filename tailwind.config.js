@@ -31,6 +31,7 @@ module.exports = {
       cursor: ['disabled'],
       hover: ['disabled'],
       fontWeight: ['hover'],
+      backgroundAttachment: ['responsive'],
     },
   },
   plugins: [],
