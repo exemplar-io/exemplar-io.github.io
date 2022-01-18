@@ -3,23 +3,8 @@ import Sidebar from '../components/UI/Sidebar/Sidebar';
 
 // How to create a code block
 
-// import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-// import { nord } from 'react-syntax-highlighter/dist/esm/styles/prism';
-
-// const code_block = `<div className="min-h-screen bg-gray-800 text-center">
-//   <BrowserRouter>
-//     <NavigationBar />
-//     <Switch>
-//       <Route path={'/docs'} component={Docs} />
-//       <Route path={'/about'} component={About} />
-//       <Route path={'/'} component={Homepage} />
-//     </Switch>
-//   </BrowserRouter>
-// </div>`;
-//
-// <SyntaxHighlighter language="javascript" style={nord}>
-//   {code_block}
-// </SyntaxHighlighter>;
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { nord } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const Docs = () => {
   return (
@@ -473,9 +458,89 @@ const Docs = () => {
         <h2 className="text-2xl" id="root-repository">
           Root repository
         </h2>
-        <h2 className="text-2xl" id="root-repository">
-          Root repository
+        <h2
+          className="text-xl border bg-primary-900 bg-opacity-50 p-2 rounded"
+          id="addning_new_ms"
+        >
+          Adding a new microservice
         </h2>
+        <p>
+          Sometimes extending the existing microservices are not enough, which
+          leads to the step of adding a new microservice to the project. This is
+          also the part of the project, in which it would be natural to use
+          other technologies that you are more familiar with, if you do not like
+          Nestjs or prefer something else. We will show how to add a new Nestjs
+          microservice - the initial steps are the same for other microservices
+          as well though.
+        </p>
+        <p>
+          <span className="font-bold">
+            This can be skipped if using nest CLI:
+          </span>{' '}
+          The most natural step would be to create a new git repository
+        </p>
+        <p>
+          <SyntaxHighlighter language="shell" style={nord} showLineNumbers>
+            {`mkdir new-ms-name && cd ms-name && git init`}
+          </SyntaxHighlighter>
+        </p>
+        <p>
+          Now, we will create a Nestjs app. This could however be whatever
+          technology you would want.
+        </p>
+        <p>
+          <SyntaxHighlighter language="shell" style={nord} showLineNumbers>
+            {`nest new ms-name`}
+          </SyntaxHighlighter>
+          <p>
+            It will ask you some questions about the project, such as whether to
+            use npm or yarn etc. This is up to you to chose, but we use npm.
+          </p>
+          <p>
+            The next part of the Documentation is heavily based on the{' '}
+            <a
+              href="https://docs.nestjs.com/microservices/basics/"
+              target="_blank"
+            >
+              official Nestjs documentation
+            </a>
+            . Since the backend for the generated project is already using a
+            Redis MQ, we will create a microservice using Redis. Navigate into
+            the project and install the microservice package and Redis
+          </p>
+        </p>
+        <p></p>
+        <p>
+          Once that is installed go to the{' '}
+          <span className="font-mono text-sm bg-gray-300 p-1 rounded">
+            main.ts
+          </span>{' '}
+          file. Assuming the generated app is up, Redis should already be
+          running on port 6379. Import the necessary libraries and setup the
+          connection. The file should look like this
+        </p>
+        <p>
+          <SyntaxHighlighter language="javascript" style={nord} showLineNumbers>
+            {`import { NestFactory } from '@nestjs/core';
+import { MicroserviceOptions, Transport } from '@nestjs/microservices';
+import { AppModule } from './app.module';
+
+async function bootstrap() {
+  const app = await NestFactory.createMicroservice<MicroserviceOptions>(
+    AppModule,
+    {
+      transport: Transport.REDIS,
+      options: {
+        url: 'redis://redis-master:6379',
+      },
+    },
+  );
+  await app.listen();
+}
+bootstrap();`}
+          </SyntaxHighlighter>
+        </p>
+        <p></p>
       </main>
     </>
   );
