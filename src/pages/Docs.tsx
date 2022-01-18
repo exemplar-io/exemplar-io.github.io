@@ -609,7 +609,78 @@ async function bootstrap() {
 bootstrap();`}
           </SyntaxHighlighter>
         </p>
-        <p></p>
+        <h2
+          className="text-xl border-b-2 border-primary-800 font-medium bg-opacity-50 pb-1"
+          id="deploying-to-production"
+        >
+          Deploying to production
+        </h2>
+        <p>
+          For deploying the code to production there are of course a lot of
+          options. In the generated code, we have added support for easily
+          deploying the frontend to Github Pages and the backend to a Kubernetes
+          Cluster in AWS (or any other Cloud Provider). In this section we will
+          explain how to do this.
+        </p>
+        <h2 className="text-m border-b-2 border-primary-800 font-medium bg-opacity-50 pb-1 max-w-max">
+          Deploying the frontend
+        </h2>
+        <p>
+          As explained, we have setup everything needed to deploy the frontend
+          with Github Pages to a public URL. When you create the project, a
+          Github Actions workflow called
+          <span className="italic"> deploy </span>is started which will build a
+          performance optimized build of the code and push that build to a
+          branch called <span className="font-mono"> gh-pages </span>. The
+          default URL of the frontend will have the format
+          <span className="font-mono">
+            {' '}
+            https://[username].github.io/[repository-name]
+          </span>
+          . However, we haven't made it live yet, in case you wanted to modify
+          some things before making it accessible to everyone.
+        </p>
+        <p>
+          After the <span className="italic"> deploy </span> workflow has
+          completely, follow these steps o deploy the frontend to a public
+          domain
+        </p>
+        <ul className="list-disc pl-8 bg-gray-900 bg-opacity-50 rounded p-4">
+          <li>
+            Go to the settings page of the Github repository of the frontend
+          </li>
+          <li>Navigate to the Pages menu</li>
+
+          <li>
+            Change the source branch to{' '}
+            <span className="font-mono"> gh-pages </span>
+          </li>
+        </ul>
+        <p>
+          Now just wait around 5 minutes for Github Pages to publish the code
+          and that's it!
+        </p>
+        <h2 className="text-m border-b-2 border-primary-800 font-medium bg-opacity-50 pb-1 max-w-max">
+          Deploying the backend
+        </h2>
+        <p>
+          For deploying the backend we have generated deployment files to
+          generate a Kubernetes Cluster. This cluster can basically be deployed
+          on any cloud provider supporting Kubernetes, such as Google Cloud, AWS
+          and Azure. We will go through how to deploy the cluster on AWS using
+          the service AWS EKS. For deploying on Azure you need to use the
+          service{' '}
+          <a
+            href="https://azure.microsoft.com/en-us/services/kubernetes-service/#overview"
+            target="_blank"
+          >
+            Azure Kubernetes Service
+          </a>{' '}
+          and for Google Cloud, you need to visit the service{' '}
+          <a href="https://cloud.google.com/kubernetes-engine" target="_blank">
+            Google Kubernetes Engine
+          </a>
+        </p>
       </main>
     </>
   );
