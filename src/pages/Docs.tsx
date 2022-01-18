@@ -345,12 +345,71 @@ const Docs = () => {
         >
           DevOps
         </h2>
-
+        <p>
+          In order to ensure that the app is always functioning, and that it
+          gets deployed continuously, DevOps pipelines have been setup. Each
+          component is isolated in the sense that they have their own repository
+          and thus each have their own DevOps pipelines.
+        </p>
+        <p>
+          The process of extending one of the apps is shown below. The process
+          is started, by opening a pull request. This pull request will trigger
+          two pipelines; Unit tests and E2E tests. If they pass, you will merge
+          the PR into the master branch and you can deploy the code to
+          production, knowing that it works (if you wrote tests that actually
+          check the newly implemented code).
+        </p>
         <img
           src={process.env.PUBLIC_URL + '/docs/devops.png'}
           alt="overview"
           className="w-4/6 m-auto"
         />
+        <p>
+          Depending on which app it is testing, the actual workflow and test
+          frameworks are a bit different.
+        </p>
+        <p>
+          For the frontend, there are unit tests, integration tests and E2E
+          tests. The unit tests are based on Jest and can be run using{' '}
+          <span className="font-mono text-primary-300">npm test</span>, where as
+          the E2E tests are based on the Selenium grid using webdriver.io. This
+          actually launches a Chromium browser running in headless state,
+          performing UI updates through the frontend.
+        </p>
+        <p>
+          It is E2E test, because we are directly interfering with the UI and
+          the tests are written, such that a user interaction calls the backend
+          and a value is expected in return; if the value is returned and
+          correct, it means that the other end, i.e. the backend has also been
+          included and therefore it is an E2E-test. This is possible because the
+          Selenium project running these E2E tests, pulls the whole application
+          and spins it up with Docker-compose
+        </p>
+        <p>
+          If the tests pass and you merge your branch into master, the code will{' '}
+          <span className="italic">automatically</span> be pushed to production,
+          i.e. Github pages. This is to ensure continuous deployment and if the
+          tests have been written correctly and they pass, there is no reason to
+          hold your release back in general.
+        </p>
+        <p>
+          For the other apps, the idea is the same as for the frontend, except
+          that continuous deployment is not included. Each app meaning the API
+          gateway, AuthMS and MS have their own testing pipelines, which include
+          unit and E2E-tests.
+        </p>
+        <p>
+          The E2E tests in the context of the backend are initiated through{' '}
+          Postman Automation tests. The Postman Automation tests will call the
+          endpoint(s) in the API gateway, and it will reach all the
+          microservices and Redis MQ.
+        </p>
+        <p>
+          The integration tests are triggering code across methods and classes,
+          but not across microservices. The responses from other microservices
+          are mocked, which could be message queue responses or API request
+          responses.
+        </p>
       </main>
     </>
   );

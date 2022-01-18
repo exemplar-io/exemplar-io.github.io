@@ -1,6 +1,6 @@
 const Sidebar = () => {
   return (
-    <div className="h-screen w-1/6 ml-0 pt-20 top-0 fixed flex flex-col space-y-3 border-r ">
+    <div className="h-screen w-1/6 ml-0 pt-20 top-0 fixed flex flex-col space-y-3 border-r">
       <div className="flex flex-col space-y-3 rounded p-4">
         <a
           className="sticky text-secondary font-medium text-xl  hover:font-bold"
