@@ -16,8 +16,10 @@ const Home = () => {
 
   const query = new URLSearchParams(useLocation().search);
   const code = query.get('code');
+  console.log('code1', code);
 
   useEffect(() => {
+    console.log('code', code);
     if (code) {
       api.auth(code).then((token) => {
         setToken(token);
