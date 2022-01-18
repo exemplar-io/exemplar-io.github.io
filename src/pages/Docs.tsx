@@ -12,20 +12,20 @@ const Docs = () => {
       <Sidebar />
       <main
         className={
-          'container mx-auto w-1/2 space-y-5 pb-10 pt-20 text-secondary text-left'
+          'container mx-auto w-1/2 space-y-5 pb-10 pt-20 text-secondary text-left font-montserrat '
         }
       >
         <h1
-          className="text-2xl border-2 bg-primary-900 bg-opacity-50 p-4 rounded"
+          className="text-2xl bg-primary-800 bg-opacity-50 p-3 rounded font-semibold"
           id="introduction"
         >
           Introduction
         </h1>
         <p className="text-m">
           For a developer, setting up a new project from scratch can be a
-          diﬀicult task. The developer has to come up with a good overall design
-          and architecture, while also choosing which tech stacks to use. By
-          picking the correct choices from the beginning, a lot of time spent
+          difficult task. The developer has to come up with a good overall
+          design and architecture, while also choosing which tech stacks to use.
+          By picking the correct choices from the beginning, a lot of time spent
           refactoring code in the future can be mitigated and the focus of the
           developer can be on developing cool features instead!
         </p>
@@ -42,7 +42,7 @@ const Docs = () => {
           generates for you.
         </p>
         <h2
-          className="text-xl border bg-primary-900 bg-opacity-50 p-2 rounded"
+          className="text-xl border-b-2 border-primary-800 font-medium bg-opacity-50 pb-1 "
           id="how-does-it-work"
         >
           How does it work?
@@ -65,7 +65,7 @@ const Docs = () => {
           />
         </div>
         <h2
-          className="text-xl border bg-primary-900 bg-opacity-50 p-2 rounded"
+          className="text-xl border-b-2 border-primary-800 font-medium bg-opacity-50 pb-1"
           id="tech-stack"
         >
           Tech stack
@@ -75,7 +75,7 @@ const Docs = () => {
           just like to show the tech stack that you will have available in your
           generated project.
         </p>
-        <ul className="list-disc pl-8 text-sm bg-gray-900 bg-opacity-50 rounded p-4">
+        <ul className="list-disc pl-8  bg-gray-900 bg-opacity-50 rounded p-4">
           <li>React with TypeScript (Dockerized)</li>
           <li>Nestjs applications with Typescript (Dockerized)</li>
           <li>Redis (Dockerized)</li>
@@ -90,7 +90,7 @@ const Docs = () => {
           </li>
         </ul>
         <h1
-          className="text-2xl border-2 bg-primary-900 bg-opacity-50 p-4 rounded"
+          className="text-2xl bg-primary-800 bg-opacity-50 p-3 rounded font-semibold"
           id="whats-generated"
         >
           What's generated
@@ -108,7 +108,7 @@ const Docs = () => {
           root project.
         </p>
         <h2
-          className="text-xl border bg-primary-900 bg-opacity-50 p-2 rounded"
+          className="text-xl  border-b-2 border-primary-800 font-medium bg-opacity-50 pb-1"
           id="frontend-repository"
         >
           Frontend
@@ -133,7 +133,7 @@ const Docs = () => {
           creating the infrastructure to develop, test and deploy it.
           Specifically, the following functionality is included in the frontend.
         </p>
-        <ul className="list-disc pl-8 text-sm bg-gray-900 bg-opacity-50 rounded p-4">
+        <ul className="list-disc pl-8 bg-gray-900 bg-opacity-50 rounded p-4">
           <li>
             The frontend application is a ReactJS application with Typescript
           </li>
@@ -147,7 +147,7 @@ const Docs = () => {
           </li>
         </ul>
         <h2
-          className="text-xl border bg-primary-900 bg-opacity-50 p-2 rounded"
+          className="text-xl border-b-2 border-primary-800 font-medium bg-opacity-50 pb-1"
           id="backend"
         >
           Backend
@@ -170,7 +170,7 @@ const Docs = () => {
           className="w-3/6 m-auto"
         />
         <h2
-          className="text-m border bg-primary-900 bg-opacity-50 p-1 rounded"
+          className="text-m border-b-2 border-primary-800 font-medium bg-opacity-50 pb-1 max-w-max"
           id="backend"
         >
           API gateway
@@ -193,7 +193,7 @@ const Docs = () => {
           the communication in the app. The actual authentication logic resides
           in the AuthMS.
         </p>
-        <h2 className="text-m border bg-primary-900 bg-opacity-50 p-1 rounded">
+        <h2 className="text-m border-b-2 border-primary-800 font-medium bg-opacity-50 pb-1 max-w-max">
           AuthMS
         </h2>
         <p>
@@ -217,10 +217,10 @@ const Docs = () => {
           </a>
           website.
         </p>
-        <h2 className="text-m border bg-primary-900 bg-opacity-50 p-1 rounded">
+        <h2 className="text-m border-b-2 border-primary-800 font-medium bg-opacity-50 pb-1 max-w-max">
           Backend summary
         </h2>
-        <ul className="list-disc pl-8 text-sm bg-gray-900 bg-opacity-50 rounded p-4">
+        <ul className="list-disc pl-8 bg-gray-900 bg-opacity-50 rounded p-4">
           <li>API gateway written in NestJS</li>
           <li>Authentication microservice written in NestJS</li>
           <li>Empty (extendable microservice) written in NestJS</li>
@@ -239,7 +239,7 @@ const Docs = () => {
           </li>
         </ul>
         <h2
-          className="text-xl border bg-primary-900 bg-opacity-50 p-2 rounded"
+          className="text-xl border-b-2 border-primary-800 font-medium bg-opacity-50 pb-1"
           id="root-repository"
         >
           Root repository (System)
@@ -307,7 +307,7 @@ const Docs = () => {
           Specifically, the files above means that the project supports the
           following features:
         </p>
-        <ul className="list-disc pl-8 text-sm bg-gray-900 bg-opacity-50 rounded p-4">
+        <ul className="list-disc pl-8 bg-gray-900 bg-opacity-50 rounded p-4">
           <li>
             Docker orchestration for local development using docker-compose
           </li>
@@ -326,7 +326,7 @@ const Docs = () => {
           <li>Script to build all Docker images</li>
         </ul>
         <h2
-          className="text-xl border bg-opacity-50 bg-primary-800 p-2 rounded"
+          className="text-xl border-b-2 border-primary-800 font-medium bg-opacity-50 pb-1"
           id="DevOps"
         >
           DevOps
@@ -357,10 +357,10 @@ const Docs = () => {
         <p>
           For the frontend, there are unit tests, integration tests and E2E
           tests. The unit tests are based on Jest and can be run using{' '}
-          <span className="font-mono text-primary-300">npm test</span>, where as
-          the E2E tests are based on the Selenium grid using webdriver.io. This
-          actually launches a Chromium browser running in headless state,
-          performing UI updates through the frontend.
+          <span className="font-mono text-sm  bg-gray-800 p-1">npm test</span>,
+          where as the E2E tests are based on the Selenium grid using
+          webdriver.io. This actually launches a Chromium browser running in
+          headless state, performing UI updates through the frontend.
         </p>
         <p>
           It is E2E test, because we are directly interfering with the UI and
@@ -396,7 +396,10 @@ const Docs = () => {
           are mocked, which could be message queue responses or API request
           responses.
         </p>
-        <h1 className="text-2xl  bg-primary-800 p-4 rounded" id="next-steps">
+        <h1
+          className="text-2xl  bg-primary-800 bg-opacity-50 p-3 rounded font-semibold"
+          id="next-steps"
+        >
           Next Steps - Development Guidelines
         </h1>
         <p className="text-secondary text-m text-left">
@@ -413,7 +416,10 @@ const Docs = () => {
           this section we will go through how to work with the generated project
           and how to extend it with new features.
         </p>
-        <h2 className="text-2xl" id="root-repository">
+        <h2
+          className="text-xl border-b-2 border-primary-800 font-medium bg-opacity-50 pb-1"
+          id="development-process"
+        >
           Development Process
         </h2>
         <p className="text-secondary text-m text-left">
@@ -424,26 +430,24 @@ const Docs = () => {
         </p>{' '}
         <p className="text-secondary text-m text-left">
           Generally, the flow of adding new features to the project should
-          follow the listed protocol. If the feature involves editing multiple
-          different repositories, repeat this protocol for all of the
+          follow the listed protocol below. If the feature involves editing
+          multiple different repositories, repeat this protocol for all of the
           repositories that the feature touches.
-          <ul className="list-disc">
-            <li>
-              Create and checkout a new git branch with the name of the feature.
-            </li>
-            <li>Develop the necessary code. Issue Git commits regularly</li>
-            <li>
-              Develop appropriate amount of unit, integration and e2e tests
-            </li>
-            <li>
-              When the feature is implemented, open a new pull request in
-              Github.
-            </li>
-            <li>
-              Verify that all Github Actions workflows runs and completes.
-            </li>
-            <li>Merge the pull request with the main branch.</li>
-          </ul>
+        </p>
+        <ul className="list-disc pl-8 bg-gray-900 bg-opacity-50 rounded p-4">
+          <li>
+            Create and checkout a new git branch with the name of the feature.
+          </li>
+          <li>Develop the necessary code. Issue Git commits regularly</li>
+
+          <li>Develop appropriate amount of unit, integration and e2e tests</li>
+          <li>
+            When the feature is implemented, open a new pull request in Github.
+          </li>
+          <li>Verify that all Github Actions workflows runs and completes.</li>
+          <li>Merge the pull request with the main branch.</li>
+        </ul>
+        <p className="text-secondary text-m text-left">
           The principles introduced in the list above are mostly general good
           practice. This includes working with features on a separate branch,
           developing automated tests etc. But especially important to mention,
@@ -452,14 +456,79 @@ const Docs = () => {
           configuration setting in Github but this has this up to the developer
           to do.
         </p>
-        <h2 className="text-2xl" id="root-repository">
-          Root repository
-        </h2>
-        <h2 className="text-2xl" id="root-repository">
-          Root repository
-        </h2>
         <h2
-          className="text-xl border bg-primary-900 bg-opacity-50 p-2 rounded"
+          className="text-xl border-b-2 border-primary-800 font-medium bg-opacity-50 pb-1"
+          id="developing-a-new-feature"
+        >
+          Developing a new feature
+        </h2>
+        <p className="text-secondary text-m text-left">
+          When adding a new feature to the application it often involves
+          modifying multiple different repositories as frontend changes often
+          results in the backend needing to be modified as well. In this section
+          we will go through some examples of how the different components of
+          the generated app can be extended with new features.
+        </p>
+        <h2 className="text-m border-b-2 border-primary-800 font-medium bg-opacity-50 pb-1 max-w-max">
+          Extending the frontend
+        </h2>
+        <p className="text-secondary text-m text-left">
+          The frontend is{' '}
+          <a href="https://reactjs.org/" target="_blank">
+            ReactJS
+          </a>{' '}
+          application, so extending it involves adding new UI components to
+          existing pages or adding separate pages that can be accessed with e.g.
+          a navigation bar. To add new pages to the frontend, you need to
+          implement routing in the app in order to match the different urls to
+          different pages. Visit{' '}
+          <a
+            href="https://www.techomoro.com/how-to-create-a-multi-page-website-with-react-in-5-minutes/"
+            target="_blank"
+          >
+            this guide
+          </a>{' '}
+          to see how to do it.
+        </p>
+        <p className="text-secondary text-m text-left">
+          The code for the communication with the backend takes places in the
+          files located in the <span className="font-mono">api</span> folder.
+          When adding new features you are most likely going to extend one of
+          these files with new api calls.
+        </p>
+        <h2
+          className="text-m border-b-2 border-primary-800 font-medium bg-opacity-50 pb-1 max-w-max"
+          id="root-repository"
+        >
+          Extending a microservice
+        </h2>
+        <p className="text-secondary text-m text-left">
+          The generated microservices are NestJS applications, so for extending
+          these applications with new features, a good place to start would be
+          to visit the{' '}
+          <a href="https://docs.nestjs.com/" target="_blank">
+            NestJS documentation.
+          </a>{' '}
+          Here, you will find a lot more info on how NestJS is setup and how new
+          components can be added. Generally, for extending the microservices,
+          the{' '}
+          <a href="https://docs.nestjs.com/cli/overview" target="_blank">
+            NestJS CLI
+          </a>{' '}
+          can be used. For example, to generate a new module in the project, the
+          following command can be used{' '}
+          <SyntaxHighlighter language="shell" style={nord} showLineNumbers>
+            {`nest g module`}
+          </SyntaxHighlighter>
+          If the folder with the name of the module is not already present, Nest
+          will also create this for you. Similarly, the Nest CLI can be used to
+          create template code for service classes, controller classes and even
+          automated tests. Similarly, the Nest CLI can be used to create
+          controller template code for service classes, controller classes and
+          even automated tests.
+        </p>
+        <h2
+          className="text-xl border-b-2 border-primary-800 font-medium bg-opacity-50 pb-1"
           id="addning_new_ms"
         >
           Adding a new microservice
@@ -672,6 +741,78 @@ returnSomeMessage(): string {
         <p>
           To test it out, if you navigate to localhost:3000/new-endpoint, you
           should see the message above.
+        </p>
+        <h2
+          className="text-xl border-b-2 border-primary-800 font-medium bg-opacity-50 pb-1"
+          id="deploying-to-production"
+        >
+          Deploying to production
+        </h2>
+        <p>
+          For deploying the code to production there are of course a lot of
+          options. In the generated code, we have added support for easily
+          deploying the frontend to Github Pages and the backend to a Kubernetes
+          Cluster in AWS (or any other Cloud Provider). In this section we will
+          explain how to do this.
+        </p>
+        <h2 className="text-m border-b-2 border-primary-800 font-medium bg-opacity-50 pb-1 max-w-max">
+          Deploying the frontend
+        </h2>
+        <p>
+          As explained, we have setup everything needed to deploy the frontend
+          with Github Pages to a public URL. When you create the project, a
+          Github Actions workflow called
+          <span className="italic"> deploy </span>is started which will build a
+          performance optimized build of the code and push that build to a
+          branch called <span className="font-mono"> gh-pages </span>. The
+          default URL of the frontend will have the format
+          <span className="font-mono">
+            {' '}
+            https://[username].github.io/[repository-name]
+          </span>
+          . However, we haven't made it live yet, in case you wanted to modify
+          some things before making it accessible to everyone.
+        </p>
+        <p>
+          After the <span className="italic"> deploy </span> workflow has
+          completely, follow these steps o deploy the frontend to a public
+          domain
+        </p>
+        <ul className="list-disc pl-8 bg-gray-900 bg-opacity-50 rounded p-4">
+          <li>
+            Go to the settings page of the Github repository of the frontend
+          </li>
+          <li>Navigate to the Pages menu</li>
+
+          <li>
+            Change the source branch to{' '}
+            <span className="font-mono"> gh-pages </span>
+          </li>
+        </ul>
+        <p>
+          Now just wait around 5 minutes for Github Pages to publish the code
+          and that's it!
+        </p>
+        <h2 className="text-m border-b-2 border-primary-800 font-medium bg-opacity-50 pb-1 max-w-max">
+          Deploying the backend
+        </h2>
+        <p>
+          For deploying the backend we have generated deployment files to
+          generate a Kubernetes Cluster. This cluster can basically be deployed
+          on any cloud provider supporting Kubernetes, such as Google Cloud, AWS
+          and Azure. We will go through how to deploy the cluster on AWS using
+          the service AWS EKS. For deploying on Azure you need to use the
+          service{' '}
+          <a
+            href="https://azure.microsoft.com/en-us/services/kubernetes-service/#overview"
+            target="_blank"
+          >
+            Azure Kubernetes Service
+          </a>{' '}
+          and for Google Cloud, you need to visit the service{' '}
+          <a href="https://cloud.google.com/kubernetes-engine" target="_blank">
+            Google Kubernetes Engine
+          </a>
         </p>
       </main>
     </>

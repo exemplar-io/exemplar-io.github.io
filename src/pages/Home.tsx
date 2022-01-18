@@ -85,7 +85,7 @@ const Home = () => {
 
   return (
     <main className={'container mx-auto w-2/6 space-y-10 pb-20 pt-20'}>
-      <h1 className="text-secondary text-4xl">Exemplar 🔥</h1>
+      <h1 className="text-secondary text-4xl font-medium ">Exemplar 🔥</h1>
       <h3 className="text-secondary text-xl">
         In order for us to be able to create an awesome project template for
         you, we need you to authorize your Github account with us.
