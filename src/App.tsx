@@ -7,7 +7,7 @@ import NavigationBar from './components/UI/NavigationBar/NavigationBar';
 
 function App() {
   return (
-    <div className="min-h-screen text-center bg-cover bg-center bg-cover bg-wave">
+    <div className="min-h-screen text-center bg-cover bg-center bg-wave">
       <BrowserRouter>
         <NavigationBar />
         <div>

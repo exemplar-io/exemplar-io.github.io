@@ -29,7 +29,10 @@ const Docs = () => {
           'container mx-auto w-1/2 space-y-5 pb-10 pt-20 text-secondary text-left'
         }
       >
-        <h1 className="text-2xl bg-primary-800 p-4 rounded" id="introduction">
+        <h1
+          className="text-2xl border-2 bg-primary-900 bg-opacity-50 p-4 rounded"
+          id="introduction"
+        >
           Introduction
         </h1>
         <p className="text-m">
@@ -53,7 +56,7 @@ const Docs = () => {
           generates for you.
         </p>
         <h2
-          className="text-xl bg-primary-800 p-2 rounded"
+          className="text-xl border bg-primary-900 bg-opacity-50 p-2 rounded"
           id="how-does-it-work"
         >
           How does it work?
@@ -64,19 +67,21 @@ const Docs = () => {
           backend technology and create a Git repository. Afterwards, you would
           probably setup some testing framework, write a pipeline to ensure
           automatic deployment to a cloud and more. By looking at the diagram,
-          the idea behind Exemplar is, that all of this is provied to you
+          the idea behind Exemplar is, that all of this is provided to you
           already. You are simply asked to authorise your Github account and
-          choose a project name and a project is generated for you. (Fix img
-          below - looks ugly)
+          choose a project name and a project is generated for you.
         </p>
         <div>
           <img
-            src={process.env.PUBLIC_URL + '/docs/overview.png'}
+            src={process.env.PUBLIC_URL + '/docs/system.png'}
             alt="overview"
-            className="w-2/4 m-auto rounded-lg"
+            className="w-4/4 m-auto rounded-lg"
           />
         </div>
-        <h2 className="text-xl bg-primary-800 p-2 rounded" id="tech-stack">
+        <h2
+          className="text-xl border bg-primary-900 bg-opacity-50 p-2 rounded"
+          id="tech-stack"
+        >
           Tech stack
         </h2>
         <p className="text-m">
@@ -84,22 +89,22 @@ const Docs = () => {
           just like to show the tech stack that you will have available in your
           generated project.
         </p>
-        <ul className="list-disc pl-8 text-sm font-mono bg-gray-800 rounded p-4">
-          <li>React with TypeScript (Dockerized) ✅</li>
-          <li>Nestjs applications with Typescript (Dockerized) ✅</li>
-          <li>Redis (Dockerized) ✅</li>
-          <li>Git submodules ✅</li>
-          <li>Github actions ✅</li>
-          <li>Github pages ✅</li>
-          <li>Docker-compose ✅</li>
-          <li>Webdriver.io (Selenium grid) ✅</li>
-          <li>Postman automation ✅</li>
+        <ul className="list-disc pl-8 text-sm bg-gray-900 bg-opacity-50 rounded p-4">
+          <li>React with TypeScript (Dockerized)</li>
+          <li>Nestjs applications with Typescript (Dockerized)</li>
+          <li>Redis (Dockerized)</li>
+          <li>Git submodules</li>
+          <li>Github actions</li>
+          <li>Github pages</li>
+          <li>Docker-compose</li>
+          <li>Webdriver.io (Selenium grid)</li>
+          <li>Postman automation</li>
           <li>
-            Kubernetes integration including deployment files for each app ✅
+            Kubernetes integration including deployment files for each app
           </li>
         </ul>
         <h1
-          className="text-2xl  bg-primary-800 p-4 rounded"
+          className="text-2xl border-2 bg-primary-900 bg-opacity-50 p-4 rounded"
           id="whats-generated"
         >
           What's generated
@@ -117,7 +122,7 @@ const Docs = () => {
           root project.
         </p>
         <h2
-          className="text-xl bg-primary-800 p-2 rounded"
+          className="text-xl border bg-primary-900 bg-opacity-50 p-2 rounded"
           id="frontend-repository"
         >
           Frontend
@@ -142,22 +147,23 @@ const Docs = () => {
           creating the infrastructure to develop, test and deploy it.
           Specifically, the following functionality is included in the frontend.
         </p>
-        <ul className="list-disc pl-8 text-sm font-mono bg-gray-800 rounded p-4">
+        <ul className="list-disc pl-8 text-sm bg-gray-900 bg-opacity-50 rounded p-4">
           <li>
-            The frontend application is a ReactJS application with Typescript ✅
+            The frontend application is a ReactJS application with Typescript
           </li>
-          <li>
-            Automatic Github deployment to public URL with Github Pages ✅
-          </li>
-          <li>Selenium e2e test-suite setup ✅</li>
-          <li>Integration tests setup ✅</li>
-          <li>Unit tests setup ✅</li>
+          <li>Automatic Github deployment to public URL with Github Pages</li>
+          <li>Selenium e2e test-suite setup</li>
+          <li>Integration tests setup</li>
+          <li>Unit tests setup</li>
           <li>
             Github actions to build and test automatically, upon opening a pull
-            request ✅
+            request
           </li>
         </ul>
-        <h2 className="text-xl bg-primary-800 p-2 rounded" id="backend">
+        <h2
+          className="text-xl border bg-primary-900 bg-opacity-50 p-2 rounded"
+          id="backend"
+        >
           Backend
         </h2>
         <p>
@@ -177,7 +183,10 @@ const Docs = () => {
           alt="overview"
           className="w-3/6 m-auto"
         />
-        <h2 className="text-m bg-primary-800 p-1 rounded" id="backend">
+        <h2
+          className="text-m border bg-primary-900 bg-opacity-50 p-1 rounded"
+          id="backend"
+        >
           API gateway
         </h2>
         <p className="text-m">
@@ -198,7 +207,9 @@ const Docs = () => {
           the communication in the app. The actual authentication logic resides
           in the AuthMS.
         </p>
-        <h2 className="text-m bg-primary-800 p-1 rounded">AuthMS</h2>
+        <h2 className="text-m border bg-primary-900 bg-opacity-50 p-1 rounded">
+          AuthMS
+        </h2>
         <p>
           The The AuthMS microservice cannot be interacted through rest, as it
           is with the API gateway. The AuthMS can be interacted with through
@@ -220,28 +231,31 @@ const Docs = () => {
           </a>
           website.
         </p>
-        <h2 className="text-m bg-primary-800 p-1 rounded">
-          Summary of the features the backend has
+        <h2 className="text-m border bg-primary-900 bg-opacity-50 p-1 rounded">
+          Backend summary
         </h2>
-        <ul className="list-disc pl-8 text-sm font-mono bg-gray-800 rounded p-4">
-          <li>API gateway written in NestJS ✅</li>
-          <li>Authentication microservice written in NestJS ✅</li>
-          <li>Empty (extendable microservice) written in NestJS ✅</li>
+        <ul className="list-disc pl-8 text-sm bg-gray-900 bg-opacity-50 rounded p-4">
+          <li>API gateway written in NestJS</li>
+          <li>Authentication microservice written in NestJS</li>
+          <li>Empty (extendable microservice) written in NestJS</li>
           <li>
             All three of the above services in their Github repositories
-            (submodules) ✅
+            (submodules)
           </li>
-          <li>Dockerization by all of the above services ✅</li>
-          <li>Message queue using Redis ✅</li>
-          <li>Postman Automation e2e tests for API gateway ✅</li>
-          <li>Integration tests for backend ✅</li>
-          <li>Unit tests for backend ✅</li>
+          <li>Dockerization by all of the above services</li>
+          <li>Message queue using Redis</li>
+          <li>Postman Automation e2e tests for API gateway</li>
+          <li>Integration tests for backend</li>
+          <li>Unit tests for backend</li>
           <li>
             Github actions to build and test automatically, upon opening a pull
-            request ✅
+            request
           </li>
         </ul>
-        <h2 className="text-xl bg-primary-800 p-2 rounded" id="root-repository">
+        <h2
+          className="text-xl border bg-primary-900 bg-opacity-50 p-2 rounded"
+          id="root-repository"
+        >
           Root repository (System)
         </h2>
         <p className="text-m">
@@ -307,92 +321,95 @@ const Docs = () => {
           Specifically, the files above means that the project supports the
           following features:
         </p>
-        <ul className="list-disc pl-8 text-sm font-mono bg-gray-800 rounded p-4">
+        <ul className="list-disc pl-8 text-sm bg-gray-900 bg-opacity-50 rounded p-4">
           <li>
-            Docker orchestration for local development using docker-compose ✅
+            Docker orchestration for local development using docker-compose
           </li>
           <li>
             Deployment files used to deploy the microservices and Redis into
-            Kubernetes clusters either locally or on a cloud-provider ✅
+            Kubernetes clusters either locally or on a cloud-provider
           </li>
           <li>
             Local deployment, scaling and management of containerized
-            applications using Kubernetes and minikube ✅
+            applications using Kubernetes and minikube
           </li>
           <li>
             Guide on how to deploy the backend on Amazons EKS (Elastic
-            Kubernetes service) ✅
+            Kubernetes service)
           </li>
-          <li>Script to build all Docker images ✅</li>
+          <li>Script to build all Docker images</li>
         </ul>
-        <h2 className="text-xl bg-primary-800 p-2 rounded" id="DevOps">
+        <h2
+          className="text-xl border bg-opacity-50 bg-primary-800 p-2 rounded"
+          id="DevOps"
+        >
           DevOps
         </h2>
-        <h1 className="text-2xl  bg-primary-800 p-4 rounded" id="next-steps">
-          Next Steps - Development Guidelines
-        </h1>
-        <p className="text-secondary text-m text-left">
-          You have gotten the project and seen all of the awesome components and
-          code that have been generated for you. Now it's time to make it your
-          own and implement exactly the features you want in your project. In
-          this section we will go through how to work with the generated project
-          and how to extend it with new features.
+        <p>
+          In order to ensure that the app is always functioning, and that it
+          gets deployed continuously, DevOps pipelines have been setup. Each
+          component is isolated in the sense that they have their own repository
+          and thus each have their own DevOps pipelines.
         </p>
-        <p className="text-secondary text-m text-left">
-          You have gotten the project and seen all of the awesome components and
-          code that have been generated for you. Now it's time to make it your
-          own and implement exactly the features you want in your project. In
-          this section we will go through how to work with the generated project
-          and how to extend it with new features.
+        <p>
+          The process of extending one of the apps is shown below. The process
+          is started, by opening a pull request. This pull request will trigger
+          two pipelines; Unit tests and E2E tests. If they pass, you will merge
+          the PR into the master branch and you can deploy the code to
+          production, knowing that it works (if you wrote tests that actually
+          check the newly implemented code).
         </p>
-        <h2 className="text-2xl" id="root-repository">
-          Development Process
-        </h2>
-        <p className="text-secondary text-m text-left">
-          One of the key features of Exemplar is the setup for continuous
-          integration, testing and deployment. For this flow to work optimally
-          we expect you to follow a certain process when developing new
-          features. In this section we will explain this development process.
-        </p>{' '}
-        <p className="text-secondary text-m text-left">
-          Generally, the flow of adding new features to the project should
-          follow the listed protocol. If the feature involves editing multiple
-          different repositories, repeat this protocol for all of the
-          repositories that the feature touches.
-          <ul className="list-disc">
-            <li>
-              Create and checkout a new git branch with the name of the feature.
-            </li>
-            <li>Develop the necessary code. Issue Git commits regularly</li>
-            <li>
-              Develop appropriate amount of unit, integration and e2e tests
-            </li>
-            <li>
-              When the feature is implemented, open a new pull request in
-              Github.
-            </li>
-            <li>
-              Verify that all Github Actions workflows runs and completes.
-            </li>
-            <li>Merge the pull request with the main branch.</li>
-          </ul>
-          The principles introduced in the list above are mostly general good
-          practice. This includes working with features on a separate branch,
-          developing automated tests etc. But especially important to mention,
-          is that a Github pull request has to be opened in order for the
-          automated test to run. This can even be forced by changing a
-          configuration setting in Github but this has this up to the developer
-          to do.
+        <img
+          src={process.env.PUBLIC_URL + '/docs/devops.png'}
+          alt="overview"
+          className="w-4/6 m-auto"
+        />
+        <p>
+          Depending on which app it is testing, the actual workflow and test
+          frameworks are a bit different.
         </p>
-        <h2 className="text-2xl" id="root-repository">
-          Root repository
-        </h2>
-        <h2 className="text-2xl" id="root-repository">
-          Root repository
-        </h2>
-        <h2 className="text-2xl" id="root-repository">
-          Root repository
-        </h2>
+        <p>
+          For the frontend, there are unit tests, integration tests and E2E
+          tests. The unit tests are based on Jest and can be run using{' '}
+          <span className="font-mono text-primary-300">npm test</span>, where as
+          the E2E tests are based on the Selenium grid using webdriver.io. This
+          actually launches a Chromium browser running in headless state,
+          performing UI updates through the frontend.
+        </p>
+        <p>
+          It is E2E test, because we are directly interfering with the UI and
+          the tests are written, such that a user interaction calls the backend
+          and a value is expected in return; if the value is returned and
+          correct, it means that the other end, i.e. the backend has also been
+          included and therefore it is an E2E-test. This is possible because the
+          Selenium project running these E2E tests, pulls the whole application
+          and spins it up with Docker-compose
+        </p>
+        <p>
+          If the tests pass and you merge your branch into master, the code will{' '}
+          <span className="italic">automatically</span> be pushed to production,
+          i.e. Github pages. This is to ensure continuous deployment and if the
+          tests have been written correctly and they pass, there is no reason to
+          hold your release back in general.
+        </p>
+        <p>
+          For the other apps, the idea is the same as for the frontend, except
+          that continuous deployment is not included. Each app meaning the API
+          gateway, AuthMS and MS have their own testing pipelines, which include
+          unit and E2E-tests.
+        </p>
+        <p>
+          The E2E tests in the context of the backend are initiated through{' '}
+          Postman Automation tests. The Postman Automation tests will call the
+          endpoint(s) in the API gateway, and it will reach all the
+          microservices and Redis MQ.
+        </p>
+        <p>
+          The integration tests are triggering code across methods and classes,
+          but not across microservices. The responses from other microservices
+          are mocked, which could be message queue responses or API request
+          responses.
+        </p>
       </main>
     </>
   );
