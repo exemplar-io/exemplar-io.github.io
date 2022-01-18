@@ -19,6 +19,11 @@ module.exports = {
       error: colors.red['500'],
     },
     extend: {
+      fontFamily: {
+        montserrat: ['Montserrat'],
+        lato: ['Lato'],
+        garamond: ['Garamond'],
+      },
       backgroundImage: {
         wave: "url('/src/img/background.svg')",
       },

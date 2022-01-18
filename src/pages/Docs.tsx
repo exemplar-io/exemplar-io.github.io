@@ -26,13 +26,16 @@ const Docs = () => {
       <Sidebar />
       <main
         className={
-          'container mx-auto w-1/2 space-y-5 pb-10 pt-20 text-secondary text-left'
+          'container mx-auto w-1/2 space-y-5 pb-10 pt-20 text-secondary text-left font-montserrat'
         }
       >
-        <h1 className="text-2xl bg-primary-800 p-4 rounded" id="introduction">
+        <h1
+          className="text-2xl bg-primary-800 p-3 rounded font-semibold"
+          id="introduction"
+        >
           Introduction
         </h1>
-        <p className="text-m">
+        <p className="text-m ">
           For a developer, setting up a new project from scratch can be a
           diﬀicult task. The developer has to come up with a good overall design
           and architecture, while also choosing which tech stacks to use. By
@@ -359,11 +362,12 @@ const Docs = () => {
           follow the listed protocol. If the feature involves editing multiple
           different repositories, repeat this protocol for all of the
           repositories that the feature touches.
-          <ul className="list-disc">
+          <ul className="list-disc text-m  rounded p-4 space-y-2">
             <li>
               Create and checkout a new git branch with the name of the feature.
             </li>
             <li>Develop the necessary code. Issue Git commits regularly</li>
+
             <li>
               Develop appropriate amount of unit, integration and e2e tests
             </li>
@@ -384,10 +388,57 @@ const Docs = () => {
           configuration setting in Github but this has this up to the developer
           to do.
         </p>
-        <h2 className="text-2xl" id="root-repository">
-          Root repository
+        <h2 className="text-xl" id="root-repository">
+          Adding a new feature
         </h2>
-        <h2 className="text-2xl" id="root-repository">
+        <p className="text-secondary text-m text-left">
+          When adding a new feature to the application it often involves
+          modifying multiple different repositories as frontend changes often
+          results in the backend needing to be modified as well. In this section
+          we will go through some examples of how the different components of
+          the generated app can be extended with new features.
+        </p>
+        <h3 className="text-l " id="root-repository">
+          Extending the frontend
+        </h3>
+        <p className="text-secondary text-m text-left">
+          The frontend is{' '}
+          <a href="https://reactjs.org/" target="_blank">
+            ReactJS
+          </a>{' '}
+          application, so extending it involves adding new UI components to
+          existing pages or adding separate pages that can be accessed with e.g.
+          a navigation bar. To add new pages to the frontend, you need to
+          implement routing in the app in order to match the different urls to
+          different pages. Visit{' '}
+          <a
+            href="https://www.techomoro.com/how-to-create-a-multi-page-website-with-react-in-5-minutes/"
+            target="_blank"
+          >
+            this guide
+          </a>{' '}
+          to see how to do it.
+        </p>
+        <h2 className="text-l" id="root-repository">
+          Extending a microservice
+        </h2>
+        <p className="text-secondary text-m text-left">
+          The generated microservices are NestJS applications, so for extending
+          these applications with new features, a good place to start would be
+          to visit the{' '}
+          <a href="https://docs.nestjs.com/" target="_blank">
+            NestJS documentation.
+          </a>{' '}
+          Here, you will find a lot more info on how NestJS is setup and how new
+          components can be added. Generally, for extending the microservices,
+          the{' '}
+          <a href="https://docs.nestjs.com/cli/overview" target="_blank">
+            NestJS CLI
+          </a>{' '}
+          can be used. For example, to generate a new module in the project, the
+          command <p className="font-mono"> nest g </p>
+        </p>
+        <h2 className="text-2xl " id="root-repository">
           Root repository
         </h2>
         <h2 className="text-2xl" id="root-repository">
