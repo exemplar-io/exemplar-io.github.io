@@ -67,16 +67,15 @@ const Docs = () => {
           backend technology and create a Git repository. Afterwards, you would
           probably setup some testing framework, write a pipeline to ensure
           automatic deployment to a cloud and more. By looking at the diagram,
-          the idea behind Exemplar is, that all of this is provied to you
+          the idea behind Exemplar is, that all of this is provided to you
           already. You are simply asked to authorise your Github account and
-          choose a project name and a project is generated for you. (Fix img
-          below - looks ugly)
+          choose a project name and a project is generated for you.
         </p>
         <div>
           <img
-            src={process.env.PUBLIC_URL + '/docs/overview.png'}
+            src={process.env.PUBLIC_URL + '/docs/system.png'}
             alt="overview"
-            className="w-2/4 m-auto rounded-lg"
+            className="w-4/4 m-auto rounded-lg"
           />
         </div>
         <h2
@@ -346,6 +345,12 @@ const Docs = () => {
         >
           DevOps
         </h2>
+
+        <img
+          src={process.env.PUBLIC_URL + '/docs/devops.png'}
+          alt="overview"
+          className="w-4/6 m-auto"
+        />
       </main>
     </>
   );
