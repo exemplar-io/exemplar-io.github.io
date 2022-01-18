@@ -12,20 +12,20 @@ const Docs = () => {
       <Sidebar />
       <main
         className={
-          'container mx-auto w-1/2 space-y-5 pb-10 pt-20 text-secondary text-left font-montserrat'
+          'container mx-auto w-1/2 space-y-5 pb-10 pt-20 text-secondary text-left font-montserrat '
         }
       >
         <h1
-          className="text-2xl border-2 bg-primary-900 bg-opacity-50 p-4 rounded"
+          className="text-2xl bg-primary-800 bg-opacity-50 p-3 rounded font-semibold"
           id="introduction"
         >
           Introduction
         </h1>
         <p className="text-m">
           For a developer, setting up a new project from scratch can be a
-          diﬀicult task. The developer has to come up with a good overall design
-          and architecture, while also choosing which tech stacks to use. By
-          picking the correct choices from the beginning, a lot of time spent
+          difficult task. The developer has to come up with a good overall
+          design and architecture, while also choosing which tech stacks to use.
+          By picking the correct choices from the beginning, a lot of time spent
           refactoring code in the future can be mitigated and the focus of the
           developer can be on developing cool features instead!
         </p>
@@ -42,7 +42,7 @@ const Docs = () => {
           generates for you.
         </p>
         <h2
-          className="text-xl border bg-primary-900 bg-opacity-50 p-2 rounded"
+          className="text-xl border-b-2 border-primary-800 font-medium bg-opacity-50 pb-1 "
           id="how-does-it-work"
         >
           How does it work?
@@ -65,7 +65,7 @@ const Docs = () => {
           />
         </div>
         <h2
-          className="text-xl border bg-primary-900 bg-opacity-50 p-2 rounded"
+          className="text-xl border-b-2 border-primary-800 font-medium bg-opacity-50 pb-1"
           id="tech-stack"
         >
           Tech stack
@@ -75,7 +75,7 @@ const Docs = () => {
           just like to show the tech stack that you will have available in your
           generated project.
         </p>
-        <ul className="list-disc pl-8 text-sm bg-gray-900 bg-opacity-50 rounded p-4">
+        <ul className="list-disc pl-8  bg-gray-900 bg-opacity-50 rounded p-4">
           <li>React with TypeScript (Dockerized)</li>
           <li>Nestjs applications with Typescript (Dockerized)</li>
           <li>Redis (Dockerized)</li>
@@ -90,7 +90,7 @@ const Docs = () => {
           </li>
         </ul>
         <h1
-          className="text-2xl border-2 bg-primary-900 bg-opacity-50 p-4 rounded"
+          className="text-2xl bg-primary-800 bg-opacity-50 p-3 rounded font-semibold"
           id="whats-generated"
         >
           What's generated
@@ -108,7 +108,7 @@ const Docs = () => {
           root project.
         </p>
         <h2
-          className="text-xl border bg-primary-900 bg-opacity-50 p-2 rounded"
+          className="text-xl  border-b-2 border-primary-800 font-medium bg-opacity-50 pb-1"
           id="frontend-repository"
         >
           Frontend
@@ -133,7 +133,7 @@ const Docs = () => {
           creating the infrastructure to develop, test and deploy it.
           Specifically, the following functionality is included in the frontend.
         </p>
-        <ul className="list-disc pl-8 text-sm bg-gray-900 bg-opacity-50 rounded p-4">
+        <ul className="list-disc pl-8 bg-gray-900 bg-opacity-50 rounded p-4">
           <li>
             The frontend application is a ReactJS application with Typescript
           </li>
@@ -147,7 +147,7 @@ const Docs = () => {
           </li>
         </ul>
         <h2
-          className="text-xl border bg-primary-900 bg-opacity-50 p-2 rounded"
+          className="text-xl border-b-2 border-primary-800 font-medium bg-opacity-50 pb-1"
           id="backend"
         >
           Backend
@@ -170,7 +170,7 @@ const Docs = () => {
           className="w-3/6 m-auto"
         />
         <h2
-          className="text-m border bg-primary-900 bg-opacity-50 p-1 rounded"
+          className="text-m border-b-2 border-primary-800 font-medium bg-opacity-50 pb-1 max-w-max"
           id="backend"
         >
           API gateway
@@ -193,7 +193,7 @@ const Docs = () => {
           the communication in the app. The actual authentication logic resides
           in the AuthMS.
         </p>
-        <h2 className="text-m border bg-primary-900 bg-opacity-50 p-1 rounded">
+        <h2 className="text-m border-b-2 border-primary-800 font-medium bg-opacity-50 pb-1 max-w-max">
           AuthMS
         </h2>
         <p>
@@ -217,10 +217,10 @@ const Docs = () => {
           </a>
           website.
         </p>
-        <h2 className="text-m border bg-primary-900 bg-opacity-50 p-1 rounded">
+        <h2 className="text-m border-b-2 border-primary-800 font-medium bg-opacity-50 pb-1 max-w-max">
           Backend summary
         </h2>
-        <ul className="list-disc pl-8 text-sm bg-gray-900 bg-opacity-50 rounded p-4">
+        <ul className="list-disc pl-8 bg-gray-900 bg-opacity-50 rounded p-4">
           <li>API gateway written in NestJS</li>
           <li>Authentication microservice written in NestJS</li>
           <li>Empty (extendable microservice) written in NestJS</li>
@@ -239,7 +239,7 @@ const Docs = () => {
           </li>
         </ul>
         <h2
-          className="text-xl border bg-primary-900 bg-opacity-50 p-2 rounded"
+          className="text-xl border-b-2 border-primary-800 font-medium bg-opacity-50 pb-1"
           id="root-repository"
         >
           Root repository (System)
@@ -307,7 +307,7 @@ const Docs = () => {
           Specifically, the files above means that the project supports the
           following features:
         </p>
-        <ul className="list-disc pl-8 text-sm bg-gray-900 bg-opacity-50 rounded p-4">
+        <ul className="list-disc pl-8 bg-gray-900 bg-opacity-50 rounded p-4">
           <li>
             Docker orchestration for local development using docker-compose
           </li>
@@ -326,7 +326,7 @@ const Docs = () => {
           <li>Script to build all Docker images</li>
         </ul>
         <h2
-          className="text-xl border bg-opacity-50 bg-primary-800 p-2 rounded"
+          className="text-xl border-b-2 border-primary-800 font-medium bg-opacity-50 pb-1"
           id="DevOps"
         >
           DevOps
@@ -357,10 +357,10 @@ const Docs = () => {
         <p>
           For the frontend, there are unit tests, integration tests and E2E
           tests. The unit tests are based on Jest and can be run using{' '}
-          <span className="font-mono text-primary-300">npm test</span>, where as
-          the E2E tests are based on the Selenium grid using webdriver.io. This
-          actually launches a Chromium browser running in headless state,
-          performing UI updates through the frontend.
+          <span className="font-mono text-sm  bg-gray-800 p-1">npm test</span>,
+          where as the E2E tests are based on the Selenium grid using
+          webdriver.io. This actually launches a Chromium browser running in
+          headless state, performing UI updates through the frontend.
         </p>
         <p>
           It is E2E test, because we are directly interfering with the UI and
@@ -396,7 +396,10 @@ const Docs = () => {
           are mocked, which could be message queue responses or API request
           responses.
         </p>
-        <h1 className="text-2xl  bg-primary-800 p-4 rounded" id="next-steps">
+        <h1
+          className="text-2xl  bg-primary-800 bg-opacity-50 p-3 rounded font-semibold"
+          id="next-steps"
+        >
           Next Steps - Development Guidelines
         </h1>
         <p className="text-secondary text-m text-left">
@@ -413,7 +416,10 @@ const Docs = () => {
           this section we will go through how to work with the generated project
           and how to extend it with new features.
         </p>
-        <h2 className="text-2xl" id="root-repository">
+        <h2
+          className="text-xl border-b-2 border-primary-800 font-medium bg-opacity-50 pb-1"
+          id="development-process"
+        >
           Development Process
         </h2>
         <p className="text-secondary text-m text-left">
@@ -424,27 +430,24 @@ const Docs = () => {
         </p>{' '}
         <p className="text-secondary text-m text-left">
           Generally, the flow of adding new features to the project should
-          follow the listed protocol. If the feature involves editing multiple
-          different repositories, repeat this protocol for all of the
+          follow the listed protocol below. If the feature involves editing
+          multiple different repositories, repeat this protocol for all of the
           repositories that the feature touches.
-          <ul className="list-disc text-m  rounded p-4 space-y-2">
-            <li>
-              Create and checkout a new git branch with the name of the feature.
-            </li>
-            <li>Develop the necessary code. Issue Git commits regularly</li>
+        </p>
+        <ul className="list-disc pl-8 bg-gray-900 bg-opacity-50 rounded p-4">
+          <li>
+            Create and checkout a new git branch with the name of the feature.
+          </li>
+          <li>Develop the necessary code. Issue Git commits regularly</li>
 
-            <li>
-              Develop appropriate amount of unit, integration and e2e tests
-            </li>
-            <li>
-              When the feature is implemented, open a new pull request in
-              Github.
-            </li>
-            <li>
-              Verify that all Github Actions workflows runs and completes.
-            </li>
-            <li>Merge the pull request with the main branch.</li>
-          </ul>
+          <li>Develop appropriate amount of unit, integration and e2e tests</li>
+          <li>
+            When the feature is implemented, open a new pull request in Github.
+          </li>
+          <li>Verify that all Github Actions workflows runs and completes.</li>
+          <li>Merge the pull request with the main branch.</li>
+        </ul>
+        <p className="text-secondary text-m text-left">
           The principles introduced in the list above are mostly general good
           practice. This includes working with features on a separate branch,
           developing automated tests etc. But especially important to mention,
@@ -453,8 +456,11 @@ const Docs = () => {
           configuration setting in Github but this has this up to the developer
           to do.
         </p>
-        <h2 className="text-xl" id="root-repository">
-          Adding a new feature
+        <h2
+          className="text-xl border-b-2 border-primary-800 font-medium bg-opacity-50 pb-1"
+          id="developing-a-new-feature"
+        >
+          Developing a new feature
         </h2>
         <p className="text-secondary text-m text-left">
           When adding a new feature to the application it often involves
@@ -463,9 +469,9 @@ const Docs = () => {
           we will go through some examples of how the different components of
           the generated app can be extended with new features.
         </p>
-        <h3 className="text-l " id="root-repository">
+        <h2 className="text-m border-b-2 border-primary-800 font-medium bg-opacity-50 pb-1 max-w-max">
           Extending the frontend
-        </h3>
+        </h2>
         <p className="text-secondary text-m text-left">
           The frontend is{' '}
           <a href="https://reactjs.org/" target="_blank">
@@ -484,7 +490,16 @@ const Docs = () => {
           </a>{' '}
           to see how to do it.
         </p>
-        <h2 className="text-l" id="root-repository">
+        <p className="text-secondary text-m text-left">
+          The code for the communication with the backend takes places in the
+          files located in the <span className="font-mono">api</span> folder.
+          When adding new features you are most likely going to extend one of
+          these files with new api calls.
+        </p>
+        <h2
+          className="text-m border-b-2 border-primary-800 font-medium bg-opacity-50 pb-1 max-w-max"
+          id="root-repository"
+        >
           Extending a microservice
         </h2>
         <p className="text-secondary text-m text-left">
@@ -501,13 +516,19 @@ const Docs = () => {
             NestJS CLI
           </a>{' '}
           can be used. For example, to generate a new module in the project, the
-          command <p className="font-mono"> nest g </p>
+          following command can be used{' '}
+          <SyntaxHighlighter language="shell" style={nord} showLineNumbers>
+            {`nest g module`}
+          </SyntaxHighlighter>
+          If the folder with the name of the module is not already present, Nest
+          will also create this for you. Similarly, the Nest CLI can be used to
+          create template code for service classes, controller classes and even
+          automated tests. Similarly, the Nest CLI can be used to create
+          controller template code for service classes, controller classes and
+          even automated tests.
         </p>
-        <h2 className="text-2xl " id="root-repository">
-          Root repository
-        </h2>
         <h2
-          className="text-xl border bg-primary-900 bg-opacity-50 p-2 rounded"
+          className="text-xl border-b-2 border-primary-800 font-medium bg-opacity-50 pb-1"
           id="addning_new_ms"
         >
           Adding a new microservice
@@ -560,7 +581,7 @@ const Docs = () => {
         <p></p>
         <p>
           Once that is installed go to the{' '}
-          <span className="font-mono text-sm bg-gray-300 p-1 rounded">
+          <span className="font-mono text-sm bg-gray-800 p-1 rounded">
             main.ts
           </span>{' '}
           file. Assuming the generated app is up, Redis should already be
