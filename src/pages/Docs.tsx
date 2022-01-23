@@ -844,7 +844,7 @@ returnSomeMessage(): string {
         </p>
         <p>Now, you can deploy using kubetl:</p>
         <SyntaxHighlighter language="shell" style={nord} showLineNumbers>
-          {`kubectl deploy`}
+          {`kubectl apply -f deploy-api.yaml\nkubectl apply -f deploy-ms.yaml\nkubectl apply -f deploy-redis.yaml`}
         </SyntaxHighlighter>
       </main>
     </>
