@@ -183,6 +183,13 @@ const Home = () => {
                   {`cd ${projectName} && docker-compose up`}
                 </SyntaxHighlighter>
               </div>
+              <div>
+                <h3 className="text-secondary text-xl">
+                  To learn more on how to work with the project from here, visit
+                  our Docs page, which you will find in the top right corner of
+                  this page! 😎
+                </h3>
+              </div>
             </>
           ) : null}
         </>
