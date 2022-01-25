@@ -158,7 +158,7 @@ const Docs = () => {
           the white box surrounding the API gateway, AuthMS, MS and MQ.
         </p>
         <p>
-          As it is, the backend’s current functionality is to authenticate users
+          As it is, the backend's current functionality is to authenticate users
           and that's it. As mentioned in the frontend section, the focus is to
           create the infrastructure to develop a scalable and flexible
           application. To authenticate a user, all of the components below are
@@ -578,10 +578,9 @@ const Docs = () => {
             the project and install the microservice package and Redis
           </p>
         </p>
-        <p></p>
         <p>
           Once that is installed go to the{' '}
-          <span className="font-mono text-sm bg-gray-800 p-1 rounded">
+          <span className="font-mono text-sm bg-primary-500 p-1 rounded">
             main.ts
           </span>{' '}
           file. Assuming the generated app is up, Redis should already be
@@ -608,6 +607,140 @@ async function bootstrap() {
 }
 bootstrap();`}
           </SyntaxHighlighter>
+        </p>
+        <p>
+          It is not necessary, but ideally the microservice should be
+          Dockerized. The same Dockerfile used in the other microservices, i.e.
+          AuthMS and MS can be used again. For local development, it is nice to
+          use docker-compose, so the next step is to extend the
+          docker-compose.yml file to spin up the new service.
+        </p>
+        <SyntaxHighlighter language="yaml" style={nord} showLineNumbers>
+          {`new-ms:
+  container_name: nestjs_new-ms-name_dev
+  image: nestjs-ms-dev:1.0.0
+  build:
+    context: ./new-ms-name
+    target: development
+    dockerfile: ./Dockerfile
+  command: npm run start:dev
+  networks:
+    - nesjs-network
+  volumes:
+    - ./ms:/usr/src/app
+    - /usr/src/app/node_modules
+  restart: unless-stopped`}
+        </SyntaxHighlighter>
+        <p>
+          You set the context to be the name of the new microservice, and
+          therefore you will need to put the Dockerfile in the root folder of
+          the new microservice.
+        </p>
+        <p>
+          Now, if you run{' '}
+          <span className="font-mono text-sm bg-primary-500 p-1 rounded">
+            docker-compose up
+          </span>{' '}
+          the new microservice should be deployed along the others, and it will
+          listen to the Redis queue.
+        </p>
+        <p>
+          The new microservice is now officially a part of your application, but
+          it cannot really be interacted with. In order to tie all the loose
+          ends together, the next step is to define a message Redis message and
+          create an endpoint in the API-gateway.
+        </p>
+        <p>
+          Go the the{' '}
+          <span className="font-mono text-sm bg-primary-500 p-1 rounded">
+            app.controller.ts
+          </span>{' '}
+          in the api microservice. As mentioned, we want to create a new
+          endpoint that can be called externally. A simple GET request is
+          sufficient for this use case.
+        </p>
+        <p>
+          <SyntaxHighlighter language="javascript" style={nord} showLineNumbers>
+            {`@Get('new-endpoint')
+newEndpoint() {
+  return this.appService.newEndpoint();
+}`}
+          </SyntaxHighlighter>
+        </p>
+        <p>
+          In the same microservice, go to the service class{' '}
+          <span className="font-mono text-sm bg-primary-500 p-1 rounded">
+            app.service.ts
+          </span>{' '}
+          and implemented the method that is called above, i.e.{' '}
+          <span className="font-mono text-sm bg-primary-500 p-1 rounded">
+            newEndpoint()
+          </span>
+          .
+        </p>
+        <p>
+          <SyntaxHighlighter language="javascript" style={nord} showLineNumbers>
+            {`newEndpoint() {
+  return this.clientProxy.send('new-endpoint', 'arbitrary-data')
+}`}
+          </SyntaxHighlighter>
+        </p>
+        <p>
+          What this does is that it sends a new message to the Redis message
+          queue, with a message id{' '}
+          <span className="font-mono text-sm bg-primary-500 p-1 rounded">
+            new-endpoint
+          </span>{' '}
+          and some data, in this case a string.
+        </p>
+        <p>
+          In the new microservice,{' '}
+          <span className="font-mono text-sm bg-primary-500 p-1 rounded">
+            new-ms
+          </span>{' '}
+          we want to listen for messages containing the message id{' '}
+          <span className="font-mono text-sm bg-primary-500 p-1 rounded">
+            new-endpoint
+          </span>
+          .
+        </p>
+        <p>
+          In order to do so, go the the{' '}
+          <span className="font-mono text-sm bg-primary-500 p-1 rounded">
+            app.controller.ts
+          </span>{' '}
+          in the new-ms microservice. Here, we decorate the method with the{' '}
+          message pattern decorator.
+        </p>
+        <p>
+          <SyntaxHighlighter language="javascript" style={nord} showLineNumbers>
+            {`@MessagePattern('new-endpoint')
+returnSomeMessage(): string {
+  return this.appService.returnSomeMessage();
+}`}
+          </SyntaxHighlighter>
+        </p>
+        <p>
+          Lastly, in the same microservice, go to the service class{' '}
+          <span className="font-mono text-sm bg-primary-500 p-1 rounded">
+            app.service.ts
+          </span>{' '}
+          and implemented the method that is called above, i.e.{' '}
+          <span className="font-mono text-sm bg-primary-500 p-1 rounded">
+            returnSomeMessage()
+          </span>
+          .
+        </p>
+        <p>
+          <SyntaxHighlighter language="javascript" style={nord} showLineNumbers>
+            {`newEndpoint(): string {
+  return 'You have created a new endpoint which uses Redis';
+}`}
+          </SyntaxHighlighter>
+        </p>
+        <p>
+          To test it out, if you navigate to localhost:3000/new-endpoint, you
+          should see the message above.
         </p>
         <h2
           className="text-xl border-b-2 border-primary-800 font-medium bg-opacity-50 pb-1"
@@ -681,6 +814,38 @@ bootstrap();`}
             Google Kubernetes Engine
           </a>
         </p>
+        <p>
+          To deploy on AWS you need to utilize the generated deployment files as
+          well as some commandline tools for kubernetes and AWS EKS. Below is a
+          guide to deploy with the backend on a Macbook
+        </p>
+        <p>First, you need to get the EKS CLI</p>
+        <SyntaxHighlighter language="shell" style={nord} showLineNumbers>
+          {`brew tap weaveworks/tap \nbrew install weaveworks/tap/eksctl`}
+        </SyntaxHighlighter>
+        <p>
+          Then, you need to create a cluster and make sure you have AWS
+          credentials stored in a file `~/.aws/credentials`. A lot of variables
+          are available and the process can take up to 20 minutes.{' '}
+        </p>
+        <SyntaxHighlighter language="shell" style={nord} showLineNumbers>
+          {`eksctl create cluster --name exemplar --node-type t2.micro`}
+        </SyntaxHighlighter>
+        <p>To verify the status of the generated node, input the following: </p>
+        <SyntaxHighlighter language="shell" style={nord} showLineNumbers>
+          {`kubectl get nodes`}
+        </SyntaxHighlighter>
+        <p>
+          Then, you need to create an ECR registry and publish your images.{' '}
+        </p>
+        <p>
+          In your .yaml deployment files make sure that the image value points
+          to the ECR url from AWS.{' '}
+        </p>
+        <p>Now, you can deploy using kubetl:</p>
+        <SyntaxHighlighter language="shell" style={nord} showLineNumbers>
+          {`kubectl apply -f deploy-api.yaml\nkubectl apply -f deploy-ms.yaml\nkubectl apply -f deploy-redis.yaml`}
+        </SyntaxHighlighter>
       </main>
     </>
   );
