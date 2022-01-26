@@ -158,7 +158,7 @@ const Docs = () => {
           the white box surrounding the API gateway, AuthMS, MS and MQ.
         </p>
         <p>
-          As it is, the backend’s current functionality is to authenticate users
+          As it is, the backend's current functionality is to authenticate users
           and that's it. As mentioned in the frontend section, the focus is to
           create the infrastructure to develop a scalable and flexible
           application. To authenticate a user, all of the components below are
@@ -814,6 +814,38 @@ returnSomeMessage(): string {
             Google Kubernetes Engine
           </a>
         </p>
+        <p>
+          To deploy on AWS you need to utilize the generated deployment files as
+          well as some commandline tools for kubernetes and AWS EKS. Below is a
+          guide to deploy with the backend on a Macbook
+        </p>
+        <p>First, you need to get the EKS CLI</p>
+        <SyntaxHighlighter language="shell" style={nord} showLineNumbers>
+          {`brew tap weaveworks/tap \nbrew install weaveworks/tap/eksctl`}
+        </SyntaxHighlighter>
+        <p>
+          Then, you need to create a cluster and make sure you have AWS
+          credentials stored in a file `~/.aws/credentials`. A lot of variables
+          are available and the process can take up to 20 minutes.{' '}
+        </p>
+        <SyntaxHighlighter language="shell" style={nord} showLineNumbers>
+          {`eksctl create cluster --name exemplar --node-type t2.micro`}
+        </SyntaxHighlighter>
+        <p>To verify the status of the generated node, input the following: </p>
+        <SyntaxHighlighter language="shell" style={nord} showLineNumbers>
+          {`kubectl get nodes`}
+        </SyntaxHighlighter>
+        <p>
+          Then, you need to create an ECR registry and publish your images.{' '}
+        </p>
+        <p>
+          In your .yaml deployment files make sure that the image value points
+          to the ECR url from AWS.{' '}
+        </p>
+        <p>Now, you can deploy using kubetl:</p>
+        <SyntaxHighlighter language="shell" style={nord} showLineNumbers>
+          {`kubectl apply -f deploy-api.yaml\nkubectl apply -f deploy-ms.yaml\nkubectl apply -f deploy-redis.yaml`}
+        </SyntaxHighlighter>
       </main>
     </>
   );
