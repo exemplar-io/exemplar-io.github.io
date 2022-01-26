@@ -38,14 +38,8 @@ const NavigationBar = () => {
             >
               docs
             </NavigationItem>
-            <NavigationItem
-              link={'/about'}
-              onClick={() => setNavbarOpen(!navbarOpen)}
-            >
-              about
-            </NavigationItem>
             <ExternalNavigationItem
-              link={'https://github.com/peareasy-elastics'}
+              link={'https://github.com/exemplar-io/project'}
             >
               github
             </ExternalNavigationItem>
